@@ -22,9 +22,7 @@ TYML2::Application.routes.draw do
   put '/users/:id', :controller => 'Users', :action => 'update'
 
   #comment stuff
-  post '/comments/new', :controller => 'Comments', :action => 'create', :as => 'comments'
-  put '/comments/:id', :controller => 'Comments', :action => 'update', :as => 'comments'
-  delete '/comments/:id', :controller => 'Comments', :action => 'destroy', :as => 'comments'
+  resources :comments, :only => [ :create, :update, :destroy ]
 
   #tyml stuff
   post '/tymls', :controller => 'Tymls', :action => 'create'
