@@ -4,7 +4,7 @@
   <div class="tyml-container group">
     <% if tyml.viewed %>
       <div class="tyml-viewed" data-state="unread">
-        <span><%= link_to 'Mark as unread', mark_as_read_or_unread_url(tyml), :method => 'put' %></span>
+        <span><%= link_to 'Mark as unread', mark_as_read_url(tyml), :method => 'put' %></span>
       </div>
     <% else %>
       <div class="tyml-viewed" data-state="read">
