@@ -1,29 +1,43 @@
 TYML2::Application.routes.draw do
+
   root :to => 'Users#dashboard'
 
+  #signin/signout routes
+  get '/signin', :controller => 'sessions', :action => 'new', :as => 'new_user_registration'
+  post '/sessions/new', :controller => 'sessions', :action => 'create'
+  delete '/sign-out', :controller => 'sessions', :action => 'destroy', :as => 'destroy_user_session'
 
-  delete '/sign-out', :controller => 'devise/sessions', :action => 'destroy', :as => 'destroy_user_session'
-  get '/signup', :controller => 'devise/registrations', :action => 'new', :as => 'new_user_registration'
+  #sign-up flow
+  get '/signup', :controller => 'users', :action => 'new', :as => 'new_user_registration'
+  post '/users', :controller => 'users', :action => 'create'
+  post '/signup/:confirmation_token', :controller => 'confirm_accounts', :action => 'confirm'
+  #redirected to after creating account signs user in for first time
+  get '/welcome', :controller => 'confirm_accounts', :action => 'welcome'
 
-  #make sessions controller
-
+  #users dashboard
   get '/dashboard', :controller => 'Users', :action => 'dashboard', :as => 'dashboard'
-
   get '/dashboard/sent', :controller => 'Users', :action => 'sent', :as => 'sent'
-
   get '/dashboard/contacts', :controller => 'Users', :action => 'contacts', :as => 'contacts'
+  get '/dashboard/settings', :controller => 'Users', :action => 'edit', :as => 'edit_user'
+  put '/users/:id', :controller => 'Users', :action => 'update'
 
-  resources :comments, :only => :create
+  #comment stuff
+  post '/comments/new', :controller => 'Comments', :action => 'create'
+  put '/comments/:id', :controller => 'Comments', :action => 'update'
+  delete '/comments/:id', :controller => 'Comments', :action => 'destroy'
 
-  match "users/dashboard" => redirect("/dashboard")
+  #tyml stuff
+  post '/tymls', :controller => 'Tymls', :action => 'create'
+  put '/tymls/:id', :controller => 'Tymls', :action => 'update'
+  delete '/tymls/:id', :controller => 'Tymls', :action => 'destroy', :as => 'tyml'
 
-  put '/tymls/:id/mark_as_read_or_unread', :controller => 'tymls', :action => 'mark_as_read_or_unread', :as => 'mark_as_read_or_unread'
+  put '/tymls/:id/mark_as_read', :controller => 'tymls', :action => 'mark_as_read', :as => 'mark_as_read'
 
-  resources :tymls
+  #contacts stuff
+  post '/contacts', :controller => 'Contacts', :action => 'create'
+  delete '/contacts/:id', :controller => 'Contacts', :action => 'destroy', :as => 'contact'
 
-
-  resources :users
-
+  #static pages
   get '/faq', :controller => 'Statics', :action => 'faq', :as => 'faq'
 
 end
