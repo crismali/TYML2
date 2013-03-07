@@ -16,6 +16,17 @@ User.create users
 
 puts 'Created users'
 
+User.all.each do |user|
+
+  User.all.each do |user2|
+    c = Contact.new
+    c.user_id = user.id
+    c.contact_id = user2.id unless user2 == user
+    c.save
+  end
+
+end
+
 notes = [ "one kind of note", "different note", "yet another note", "even more notes"]
 urls = [ 'http://www.yelp.com/', 'https://www.google.com/', 'https://twitter.com/', 'http://wikipedia.org/', 'https://twitter.com/jeffcohen', 'http://mikeylikey.tumblr.com/']
 
@@ -24,7 +35,7 @@ urls = [ 'http://www.yelp.com/', 'https://www.google.com/', 'https://twitter.com
   tyml.note = notes[rand(4)]
   tyml.url = urls[rand(6)]
   tyml.sender_id = User.offset(rand(6)).first.id
-  tyml.receiver_email = User.offset(rand(6)).first.email
+  tyml.receiver_id = User.offset(rand(6)).first.id
 
   if rand(2) == 1
     tyml.viewed = true
