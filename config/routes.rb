@@ -3,9 +3,9 @@ TYML2::Application.routes.draw do
   root :to => 'Users#dashboard'
 
   #signin/signout routes
-  get '/signin', :controller => 'sessions', :action => 'new', :as => 'new_user_registration'
-  post '/sessions/new', :controller => 'sessions', :action => 'create'
-  delete '/sign-out', :controller => 'sessions', :action => 'destroy', :as => 'destroy_user_session'
+  get '/signin', :controller => 'sessions', :action => 'new', :as => 'new_session'
+  post '/sessions', :controller => 'sessions', :action => 'create', :as => 'sign_in'
+  delete '/sign-out', :controller => 'sessions', :action => 'destroy', :as => 'sessions'
 
   #sign-up flow
   get '/signup', :controller => 'users', :action => 'new', :as => 'new_user_registration'
@@ -22,9 +22,9 @@ TYML2::Application.routes.draw do
   put '/users/:id', :controller => 'Users', :action => 'update'
 
   #comment stuff
-  post '/comments/new', :controller => 'Comments', :action => 'create'
-  put '/comments/:id', :controller => 'Comments', :action => 'update'
-  delete '/comments/:id', :controller => 'Comments', :action => 'destroy'
+  post '/comments/new', :controller => 'Comments', :action => 'create', :as => 'comments'
+  put '/comments/:id', :controller => 'Comments', :action => 'update', :as => 'comments'
+  delete '/comments/:id', :controller => 'Comments', :action => 'destroy', :as => 'comments'
 
   #tyml stuff
   post '/tymls', :controller => 'Tymls', :action => 'create'
