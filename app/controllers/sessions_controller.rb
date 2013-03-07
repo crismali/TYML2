@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    #login form/page
+
   end
 
   def destroy
