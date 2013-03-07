@@ -20,11 +20,11 @@
 <header class="header group" role="banner">
   <div class="container">
     <nav>
-      <%= (link_to "TYML", dashboard_url, :class => 'logo') if user_signed_in? %>
-      <%= link_to "Dashboard", dashboard_url if user_signed_in? %>
+      <%= (link_to "TYML", dashboard_url, :class => 'logo') unless @current_user.nil? %>
+      <%= link_to "Dashboard", dashboard_url unless @current_user.nil? %>
       <a href="#share" data-behavior="share-tyml">Share</a>
-      <%= link_to "Sent", sent_url if user_signed_in? %>
-      <%= (link_to "Sign-out", destroy_user_session_path, :method => 'delete') if user_signed_in? %>
+      <%= link_to "Sent", sent_url unless @current_user.nil? %>
+      <%= (link_to "Sign-out", sessions_url, :method => 'delete') unless @current_user.nil? %>
     </nav>
   </div>
 </header>
