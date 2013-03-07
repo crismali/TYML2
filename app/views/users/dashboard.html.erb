@@ -8,7 +8,7 @@
       </div>
     <% else %>
       <div class="tyml-viewed" data-state="read">
-        <span><%= link_to 'Mark as read', mark_as_read_or_unread_url(tyml), :method => 'put' %></span>
+        <span><%= link_to 'Mark as read', mark_as_read_url(tyml), :method => 'put' %></span>
       </div>
     <% end %>
     <div class="tyml-profile-image"><%= image_tag tyml.sender.profile_pic %></div>
