@@ -1,4 +1,4 @@
-<%= form_for @tyml do |f| %>
+<%= form_for Tyml.new do |f| %>
   <div class="note-form">
     <h3>Thought you might like&hellip;</h3>
 
@@ -7,7 +7,7 @@
     <%= f.hidden_field :sender_id, :value => @current_user.id %>
 
     <%= f.text_field :url, :placeholder => "Enter URL here" %>
-    <%= f.text_field :receiver_email, :placeholder => "Email", :id => "auto_complete", :autocomplete => "off" %>
+    <%= f.text_field :receiver_id, :placeholder => "Email", :id => "auto_complete", :autocomplete => "off" %>
     <%= f.text_area :note, :placeholder => "Note (optional)", :rows => "2" %>
     <div class="input-container">
       <%= f.submit "Share" %>
