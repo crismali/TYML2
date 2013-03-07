@@ -1,0 +1,51 @@
+html,
+body
+  height: 100%
+  width: 100%
+html
+  font-size: 18px
+  line-height: 1.5em
+  font-family: 'open-sans', Helvetica, sans-serif
+  font-weight: 300
+  background: #1b75bb
+
+strong
+  font-weight: 400
+
+body
+  background: #62b1e2
+  background: -moz-radial-gradient(center, ellipse cover,  #62b1e2 0%, #1b75bb 55%)
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#62b1e2), color-stop(55%,#1b75bb))
+  background: -webkit-radial-gradient(center, ellipse cover,  #62b1e2 0%,#1b75bb 55%)
+  background: -o-radial-gradient(center, ellipse cover,  #62b1e2 0%,#1b75bb 55%)
+  background: -ms-radial-gradient(center, ellipse cover,  #62b1e2 0%,#1b75bb 55%)
+  background: radial-gradient(ellipse at center,  #62b1e2 0%,#1b75bb 55%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#62b1e2', endColorstr='#1b75bb',GradientType=1 )
+  background-repeat: no-repeat
+  padding-right: 1em
+  padding-left: 1em
+
+*, :after, :before
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+.group:before,
+.group:after
+  content: ""
+  display: table
+.group:after
+  clear: both
+.group
+  zoom: 1
+
+.container
+  max-width: 960px
+  margin: 0 auto
+  zoom: 1
+  &:before,
+  &:after
+    content: ""
+    display: table
+  &:after
+    clear: both

@@ -1,0 +1,83 @@
+.tyml-container
+  background: white
+  margin-bottom: 1em
+  padding: 1em
+  position: relative
+  line-height: 1.4
+  -webkit-border-radius: 2px
+  -moz-border-radius: 2px
+  border-radius: 2px
+.tyml-profile-image
+  width: 4em
+  height: 4em
+  float: left
+  img
+    width: 100%
+    height: auto
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+  @include respond-to(xsmall)
+    width: 5em
+    height: 5em
+    margin: 0 auto 0.5em auto
+    float: none
+
+.tyml-user
+  font-weight: 600
+  padding-left: 5em
+  span
+    display: inline-block
+    font-weight: 300
+  @include respond-to(xsmall)
+    text-align: center
+    padding-left: 0
+    span
+      display: block
+      font-size: 0.75em
+
+.tyml-content-wrap
+  padding-left: 5em
+  @include respond-to(xsmall)
+    float: none
+    padding-left: 0
+
+.tyml-url
+  padding-top: 0.4em
+  @include respond-to(xsmall)
+    text-align: center
+    clear: left
+
+.tyml-note
+  padding-top: 0.4em
+  font-style: oblique
+  &:after,
+  &:before
+    content: "\""
+  @include respond-to(xsmall)
+    text-align: center
+
+.tyml-viewed
+  position: absolute
+  top: 1em
+  right: 1em
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  border-radius: 3px
+  border: 1px solid #aaa
+  line-height: 1
+  line-height: 0.65em
+  padding: 0.2em 0.3em 0.2em 0.3em
+  span
+    font-size: 0.65em
+  a
+    color: #aaa
+    text-decoration: none
+  &[data-state="unread"]
+    border-color: red
+    a
+      color: red
+  &[data-state="read"]
+    border-color: #3aad4b
+    a
+      color: #3aad4b
