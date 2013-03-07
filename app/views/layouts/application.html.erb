@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TYML2</title>
+  <title>TYML</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript" src="//use.typekit.net/xhm7oux.js"></script> <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
+  <%= render 'layouts/header' %>
+
+<p class="alert"><%= alert %></p>
 
 <%= yield %>
+<% if controller_name != 'sessions' && controller_name != 'registrations' %>
+  <%= render 'tymls/share-modal' %>
+<% end %>
+
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/2250.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
 
 </body>
+
 </html>
