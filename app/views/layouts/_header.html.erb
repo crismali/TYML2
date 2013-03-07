@@ -3,12 +3,10 @@
 <header class="header" role="banner">
   <div class="container">
     <nav>
-      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "Sign up", new_registration_path(resource_name), :class => 'nav-button' %><br />
-      <% end -%>
-      <%- if controller_name != 'sessions' %>
-        <%= link_to "Sign in", new_session_path(resource_name), :class => 'nav-button' %><br />
-      <% end -%>
+      <%= link_to "Sign up", new_user_registration_url, :class => 'nav-button' %><br />
+
+      <%= link_to "Sign in", new_session_url, :class => 'nav-button' %><br />
+
     </nav>
   </div>
 </header>
