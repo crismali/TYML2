@@ -10,7 +10,7 @@
 <%= form_for(Tyml.new, remote: true) do |f| %>
     <%= f.text_area :note, :placeholder => "Note (optional)", :rows => "2" %>
 
-    <%= f.hidden_field :sender_id, :value => @current_user.id %>
+    <%= f.hidden_field :sender_id, :value => @current_user.id unless @current_user.nil? %>
 
     <%= f.hidden_field :url, :value => '' %>
     <%= f.hidden_field :receiver_id %>
