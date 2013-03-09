@@ -8,8 +8,8 @@ TYML2::Application.routes.draw do
   delete '/sign-out', :controller => 'sessions', :action => 'destroy', :as => 'sessions'
 
   #sign-up flow
-  get '/signup', :controller => 'users', :action => 'new', :as => 'new_user_registration'
-  post '/users', :controller => 'users', :action => 'create'
+  get '/signup', :controller => 'create_accounts', :action => 'new', :as => 'new_user_registration'
+  post '/users', :controller => 'create_accounts', :action => 'create'
   post '/signup/:confirmation_token', :controller => 'confirm_accounts', :action => 'confirm'
   #redirected to after creating account signs user in for first time
   get '/welcome', :controller => 'confirm_accounts', :action => 'welcome'
