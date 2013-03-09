@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :sent_tymls, class_name: 'Tyml', foreign_key: 'sender_id'
   has_many :received_tymls, class_name: 'Tyml', foreign_key: 'receiver_id'
-  has_many :contacts
+  has_many :contacts, class_name: 'Contact', foreign_key: 'user_id'
 
   validate :valid_email
 
