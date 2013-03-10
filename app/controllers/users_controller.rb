@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :authorize_user
 
   def authorize_user
-    if session[:user_id].nil?
+    if current_user.nil?
       redirect_to new_session_url
     end
   end
@@ -11,14 +11,18 @@ class UsersController < ApplicationController
 
   def dashboard
     current_user
-    @autocomplete_items = @current_user.contacts.map { |x| x.contact.email}
-    # @autocomplete_items = @current_user.contacts.map do |x|
-    #   z = Array.new
-    #   z << x.contact.email if x.contact.name.nil?
-    #   z << x.contact.name unless x.contact.name.nil?
-    #   z << x.contact_id
-    #   z
-    # end
+
+    @autocomplete_items = Array.new
+    @autocomplete_array = Array.new
+    @current_user.contacts.each do |x|
+      z = Array.new
+      @autocomplete_items << x.contact.email
+      z << x.contact.email
+      @autocomplete_items << x.contact.name unless x.contact.name.nil?
+      z << x.contact.name
+      z << x.contact.id
+    end
+    @autocomplete_items.sort!
   end
 
   def sent
