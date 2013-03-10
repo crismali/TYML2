@@ -1,0 +1,11 @@
+<div class="note-form">
+  <%= form_for(User.new, :url => user_registration_url, :method => :post) do |f| %>
+    <%= f.text_field :name, :placeholder => "Full name", value: session[:name] %>
+    <%= f.email_field :email, :placeholder => "Email", value: session[:email] %>
+    <%= f.password_field :password, :placeholder => "Password" %>
+    <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %>
+    <div class="input-container">
+      <%= f.submit "Sign Up" %>
+    </div>
+  <% end %>
+</div>
