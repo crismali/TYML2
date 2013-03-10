@@ -11,5 +11,17 @@ class TymlsController < ApplicationController
 
   end
 
+  def update
+
+  end
+
+  def new
+    @autocomplete_items
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
 end
