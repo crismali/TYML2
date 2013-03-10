@@ -1837,7 +1837,12 @@
 !function($){
 
   "use strict"; // jshint ;_;
-
+ function extractor(query) {
+        var result = /([^,]+)$/.exec(query);
+        if(result && result[1])
+            return result[1].trim();
+        return '';
+    }
 
  /* TYPEAHEAD PUBLIC CLASS DEFINITION
   * ================================= */
@@ -1867,8 +1872,9 @@
       return this.hide()
     }
 
-  , updater: function (item) {
-      return item
+  , updater: function(item) {
+            return this.$element.val().replace(/[^,]*$/,'')+item+', ';
+
     }
 
   , show: function () {
@@ -1925,7 +1931,9 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      var tquery = extractor(this.query);
+          if(!tquery) return false;
+          return ~item.toLowerCase().indexOf(tquery)
     }
 
   , sorter: function (items) {
@@ -2147,6 +2155,8 @@
     if ($this.data('typeahead')) return
     $this.typeahead($this.data())
   })
+
+
 
 }(window.jQuery);
 /* ==========================================================
