@@ -28,6 +28,7 @@ TYML2::Application.routes.draw do
   post '/tymls', :controller => 'Tymls', :action => 'create'
   put '/tymls/:id', :controller => 'Tymls', :action => 'update'
   delete '/tymls/:id', :controller => 'Tymls', :action => 'destroy', :as => 'tyml'
+  get '/tymls/new', :controller => 'Tymls', :action => 'new', :as => 'new_tyml'
 
   put '/tymls/:id/mark_as_read', :controller => 'tymls', :action => 'mark_as_read', :as => 'mark_as_read'
 
