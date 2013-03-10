@@ -39,9 +39,12 @@ urls = [ 'http://www.yelp.com/', 'https://www.google.com/', 'https://twitter.com
 
   if rand(2) == 1
     tyml.viewed = true
+    tyml.archived = true if rand(2) == 1
   else
     tyml.viewed = false
   end
+
+
 
   tyml.save
 end
