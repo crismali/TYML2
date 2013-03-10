@@ -14,7 +14,7 @@
 <p class="alert"><%= alert %></p>
 
 <%= yield %>
-<% if controller_name != 'sessions' && controller_name != 'registrations' %>
+<% if controller_name != 'sessions' && controller_name != 'create_accounts' %>
   <%= render 'layouts/share-modal' %>
 <% end %>
 
