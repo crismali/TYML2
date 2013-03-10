@@ -1,5 +1,30 @@
 <div class="modal-overlay">
   <div class="share-container">
-    <%= render 'users/tyml_form' %>
+     <div class="note-form">
+    <h3>Thought you might like&hellip;</h3>
+
+<%= javascript_tag "var autocomplete_items = #{ @autocomplete_items.to_json };" %>
+
+
+
+<%= text_field_tag :url, nil, :placeholder => "Enter URL here" %>
+<%= text_field_tag :receivers, nil, :placeholder => "Email", :id => "auto_complete", :autocomplete => "off" %>
+
+<%= form_for(Tyml.new, remote: true) do |f| %>
+    <%= f.text_area :note, :placeholder => "Note (optional)", :rows => "2" %>
+
+    <%= f.hidden_field :sender_id, :value => @current_user.id unless @current_user.nil? %>
+
+    <%= f.hidden_field :url, :value => '' %>
+    <%= f.hidden_field :receiver_id %>
+    <div class="input-container">
+      <%= f.submit "Share" %>
+    </div>
+  </div>
+
+<% end -%>
+
+
+
   </div>
 </div>
