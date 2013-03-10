@@ -10,9 +10,9 @@ TYML2::Application.routes.draw do
   #sign-up flow
   get '/signup', :controller => 'create_accounts', :action => 'new', :as => 'new_user_registration'
   post '/users', :controller => 'create_accounts', :action => 'create', :as => 'user_registration'
-  post '/signup/:confirmation_token', :controller => 'confirm_accounts', :action => 'confirm'
+  post '/signup/:reset_password_token', :controller => 'create_accounts', :action => 'confirm', as: 'confirm_url'
   #redirected to after creating account signs user in for first time
-  get '/welcome', :controller => 'confirm_accounts', :action => 'welcome'
+  get '/welcome', :controller => 'create_accounts', :action => 'welcome', :as => 'welcome'
 
   #users dashboard
   get '/dashboard', :controller => 'Users', :action => 'dashboard', :as => 'dashboard'
