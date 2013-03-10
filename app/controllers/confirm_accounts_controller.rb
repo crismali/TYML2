@@ -1,4 +1,0 @@
-class ConfirmAccountsController < ApplicationController
-
-
-end
