@@ -20,19 +20,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  # def autocomplete_contacts
-  #   contacts_array = Array.new
-  #   contacts.each do |c|
-  #     name = Array.new
-  #     unless c.contact.name.nil?
-
-
-
-  #     c.contact.name
-  #     end
-
-  #   end
-
-  # end
+  def autocomplete_contacts
+    autocomplete_items = Array.new
+    contacts.each do |x|
+      autocomplete_items << x.contact.email
+      autocomplete_items << x.contact.name unless x.contact.name.nil?
+    end
+    autocomplete_items.sort!
+  end
 
 end
