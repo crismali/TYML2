@@ -10,23 +10,11 @@ class UsersController < ApplicationController
 
 
   def dashboard
-    current_user
-
-    @autocomplete_items = Array.new
-    @autocomplete_array = Array.new
-    @current_user.contacts.each do |x|
-      z = Array.new
-      @autocomplete_items << x.contact.email
-      z << x.contact.email
-      @autocomplete_items << x.contact.name unless x.contact.name.nil?
-      z << x.contact.name
-      z << x.contact.id
-    end
-    @autocomplete_items.sort!
+    @autocomplete_items = current_user.autocomplete_contacts
   end
 
   def sent
-    current_user
+    @autocomplete_items = current_user.autocomplete_contacts
   end
 
 
