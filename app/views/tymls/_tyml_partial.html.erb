@@ -4,7 +4,7 @@
     <% end %>
     <p class="tyml-user"><span class="tyml-copy">You thought</span>
 
-    <% if tyml.receiver %>
+    <% if tyml.receiver.name %>
       <%=  tyml.receiver.name %>
     <% else %>
       <%= tyml.receiver.email %>
@@ -20,7 +20,7 @@
         <% tyml.comments.each do |comment| %>
           <%= render '/comments/comment', comment: comment %>
         <% end %>
-        <%= render '/comments/comment_form' %>
+        <%= render '/comments/comment_form', tyml: tyml %>
       </div>
     </div>
   </div>
