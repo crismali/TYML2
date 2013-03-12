@@ -1,6 +1,5 @@
 $('.modal-overlay').fadeOut();
 
-if(window.location.indexOf('<%= sent_url %>') != -1){
-  $('.container').prepend('<%= j(render '/users/tyml_partial', tyml: @tyml ) %>')
-};
-
+$('#auto_complete').val('');
+$('#tyml_note').val('');
+$('#tyml_url').val('');
