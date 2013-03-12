@@ -21,4 +21,41 @@ class Tyml < ActiveRecord::Base
     return receiver_ids.uniq!, receiver_names_emails
   end
 
+  def create_tymls_with_receiver_ids(receiver_ids)
+    receiver_ids.each do |a_receiver_id|
+      new_tyml = Tyml.new(params[:tyml])
+      new_tyml.receiver_id = a_receiver_id
+      new_tyml.save
+    end
+  end
+
+  def create_users_and_tymls_via_new_receiver_emails(new_receiver_emails, tyml_params)
+    new_receiver_emails.each do |receiver_email|
+      user = User.find_by_email(receiver_email)
+      new_tyml = Tyml.new(tyml_params)
+      c = Contact.new
+      if user
+        c.user_id = sender_id
+        c.contact_id = user.id
+        c.save
+        new_tyml.receiver_id = user.id
+        new_tyml.save
+      else
+        user = User.new
+        user.email = receiver_email
+
+        if user.save
+          new_tyml.receiver_id = user.id
+          new_tyml.save
+          c.user_id = sender_id
+          c.contact_id = user.id
+          c.save
+        end
+
+      end
+    end
+  end
+
+
+
 end
