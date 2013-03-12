@@ -6,10 +6,16 @@ class CreateAccountsController < ApplicationController
 
   def create
 
-    @user = User.new(params[:user])
+    session[:name] = params[:user][:name]
+    session[:email] = params[:user][:email]
 
-    session[:name] = @user.name
-    session[:email] = @user.email
+    @user = User.find_by_email(params[:user][:email])
+
+    if @user
+      @user.update_attributes(params[:user])
+    else
+      @user = User.new(params[:user])
+    end
 
     @user.reset_password_sent_at = Time.now
 
