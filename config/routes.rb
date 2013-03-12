@@ -22,6 +22,7 @@ TYML2::Application.routes.draw do
 
   resources :tymls, :only => [ :create, :update, :destroy, :new ]
   put '/tymls/:id/mark_as_read', :controller => 'tymls', :action => 'mark_as_read', :as => 'mark_as_read'
+  put '/tymls/:id/view', :controller => 'tymls', :action => 'view', :as => 'view_tyml'
 
   resources :contacts, :only => [ :create, :destroy, :index ]
 
