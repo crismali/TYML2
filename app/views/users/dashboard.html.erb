@@ -1,37 +1,6 @@
 <div class="container">
   <% @current_user.received_tymls.order('created_at desc').each do |tyml| %>
     <% @tyml_comment = tyml %>
-  <div class="tyml-container group">
-    <% if tyml.viewed %>
-      <div class="tyml-viewed" data-state="unread">
-        <span><%= link_to 'Mark as unread', mark_as_read_url(tyml), :method => 'put' %></span>
-      </div>
-    <% else %>
-      <div class="tyml-viewed" data-state="read">
-        <span><%= link_to 'Mark as read', mark_as_read_url(tyml), :method => 'put' %></span>
-      </div>
-    <% end %>
-    <div class="tyml-profile-image"><%= image_tag tyml.sender.profile_pic %></div>
-    <p class="tyml-user"><%=  tyml.sender.name %> <span class="tyml-copy">thought you might like&hellip;</span></p>
-    <div class="tyml-content-wrap">
-      <p class="tyml-url"><%=  link_to tyml.url, view_tyml_url(tyml), :method => 'put', :target => '_blank' %></p>
-
-      <% unless tyml.note.blank? %>
-        <p class="tyml-note"><%=  tyml.note %></p>
-      <% end %>
-
-      <div class="comments-container">
-        <% tyml.comments.each do |comment| %>
-          <div class="single-comment-wrap group">
-            <div class="comment-profile-image"><%= image_tag comment.user.profile_pic %></div>
-            <p class="comment-note">
-              <span class="user-name"><%= comment.user.name %></span> &mdash; <%= comment.comment_text %>
-            </p>
-          </div>
-        <% end %>
-        <%= render 'comment' %>
-      </div>
-    </div>
-  </div>
+    <%= render '/tymls/tyml_partial', tyml: tyml %>
   <% end %>
 </div>
