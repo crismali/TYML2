@@ -8,7 +8,7 @@ class Tyml < ActiveRecord::Base
 
   def get_receiver_ids
     receiver_ids = Array.new
-    receiver_names_emails = receiver_id.split(',')
+    receiver_names_emails = receiver_id.split(',').each {|x| x.strip!}
     sender.contacts.each do |c|
       if receiver_names_emails.include?(c.contact.name)
         receiver_ids << c.contact_id
@@ -43,7 +43,7 @@ class Tyml < ActiveRecord::Base
       else
         user = User.new
         user.email = receiver_email
-
+        user.password = SecureRandom.hex(10)
         if user.save
           new_tyml.receiver_id = user.id
           new_tyml.save
