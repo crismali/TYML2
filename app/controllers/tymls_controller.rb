@@ -5,7 +5,7 @@ class TymlsController < ApplicationController
 
     receiver_ids, new_receiver_emails = @tyml.get_receiver_ids
 
-    @tyml.create_tymls_with_receiver_ids(receiver_ids) unless receiver_ids.nil?
+    @tyml.create_tymls_with_receiver_ids(receiver_ids, params[:tyml]) unless receiver_ids.nil?
 
     @tyml.create_users_and_tymls_via_new_receiver_emails(new_receiver_emails, params[:tyml]) unless new_receiver_emails.empty?
 
@@ -23,7 +23,7 @@ class TymlsController < ApplicationController
   end
 
   def new
-    @autocomplete_items
+    @autocomplete_items = current_user.autocomplete_contacts
 
     respond_to do |format|
       format.js
