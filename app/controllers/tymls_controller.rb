@@ -5,35 +5,12 @@ class TymlsController < ApplicationController
 
     receiver_ids, new_receiver_emails = @tyml.get_receiver_ids
 
-    receiver_ids.each do |a_receiver_id|
-      new_tyml = Tyml.new(params[:tyml])
-      new_tyml.receiver_id = a_receiver_id
-      new_tyml.save
-    end
+    @tyml.create_tymls_with_receiver_ids(receiver_ids) unless receiver_ids.nil?
 
-    new_receiver_emails.each do |receiver_email|
-      user = User.find_by_email(receiver_email)
-      new_tyml = Tyml.new(params[:tyml])
-      c = Contact.new
-      if user
-        c.user_id = @tyml.sender_id
-        c.contact_id = user.id
-        c.save
-        new_tyml.receiver_id = user.id
-        new_tyml.save
-      else
-        user = User.new
-        user.email = receiver_email
-        if user.save
-          new_tyml.receiver_id = user.id
-          new_tyml.save
-          c.user_id = @tyml.sender_id
-          c.contact_id = user.id
-          c.save
-        end
-      end
-    end
+    @tyml.create_users_and_tymls_via_new_receiver_emails(new_receiver_emails, params[:tyml]) unless new_receiver_emails.empty?
 
+
+    #these should be sending email notifications, unless the receiver has opted out of the emails
 
     respond_to do |format|
       format.js
@@ -51,6 +28,7 @@ class TymlsController < ApplicationController
     respond_to do |format|
       format.js
     end
+
   end
 
 
