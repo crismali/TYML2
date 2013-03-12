@@ -1,7 +1,32 @@
 class TymlsController < ApplicationController
 
-  def create
+  before_filter :authorize_user
+
+  def authorize_user
+    if current_user.nil?
+      redirect_to new_session_url
+    end
+  end
+
+  before_filter :proper_account_changing_tyml, :only => [ :mark_as_read, :view, :archive_or_unarchive ]
+
+  def proper_account_changing_tyml
+    @tyml = Tyml.find(params[:id])
+    unless @tyml.receiver_id == @current_user.id
+      redirect_to new_session_url
+    end
+  end
+
+  before_filter :proper_account_creating_or_editing_tyml, :only => :create
+
+  def proper_account_creating_or_editing_tyml
     @tyml = Tyml.new(params[:tyml])
+    unless @tyml.sender_id == @current_user.id
+      redirect_to new_session_url
+    end
+  end
+
+  def create
 
     receiver_ids, new_receiver_emails = @tyml.get_receiver_ids
 
@@ -23,7 +48,6 @@ class TymlsController < ApplicationController
   end
 
   def view
-    @tyml = Tyml.find(params[:id])
     @tyml.viewed = true
     @tyml.save
     redirect_to @tyml.url
@@ -43,7 +67,6 @@ class TymlsController < ApplicationController
   end
 
   def mark_as_read
-    @tyml = Tyml.find(params[:id])
     @tyml.viewed = !@tyml.viewed
     if @tyml.save
       respond_to do |format|
@@ -53,7 +76,6 @@ class TymlsController < ApplicationController
   end
 
   def archive_or_unarchive
-    @tyml = Tyml.find(params[:id])
     @tyml.archived = !@tyml.archived
     if @tyml.save
       respond_to do |format|
