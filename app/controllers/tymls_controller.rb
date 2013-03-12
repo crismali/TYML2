@@ -22,6 +22,13 @@ class TymlsController < ApplicationController
 
   end
 
+  def view
+    @tyml = Tyml.find(params[:id])
+    @tyml.viewed = true
+    @tyml.save
+    redirect_to @tyml.url
+  end
+
   def edit
 
   end
@@ -34,6 +41,35 @@ class TymlsController < ApplicationController
     end
 
   end
+
+  def mark_as_read
+    @tyml = Tyml.find(params[:id])
+    @tyml.viewed = !@tyml.viewed
+    if @tyml.save
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def archive_or_unarchive
+    @tyml = Tyml.find(params[:id])
+    @tyml.archived = !@tyml.archived
+    if @tyml.save
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def destroy
+    @tyml = Tyml.find(params[:id])
+    @tyml.destroy
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
 
 end
