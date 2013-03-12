@@ -4,9 +4,9 @@
   <div class="container">
     <nav>
       <% if controller_name == 'sessions' %>
-        <%= link_to "Sign up", new_user_registration_url, :class => 'nav-button' %><br />
+        <%= link_to "Sign up", signup_url, :class => 'nav-button' %><br />
       <% else %>
-        <%= link_to "Sign in", new_session_url, :class => 'nav-button' %><br />
+        <%= link_to "Sign in", signin_url, :class => 'nav-button' %><br />
       <% end %>
     </nav>
   </div>
