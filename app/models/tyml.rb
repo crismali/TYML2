@@ -59,8 +59,8 @@ class Tyml < ActiveRecord::Base
   end
 
   def add_http_to_url?
-    unless url.include?('http://') || url.include?('https://')
-      url = 'http://' + url
+    unless self.url.include?('http://') || self.url.include?('https://')
+      self.url = "http://#{self.url}"
     end
   end
 
