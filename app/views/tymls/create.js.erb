@@ -1,6 +1,6 @@
 $('.modal-overlay').fadeOut();
 
 if(window.location.indexOf('<%= sent_url %>') != -1){
-  $('.container').prepend('<%= j(render 'tyml_partial', tyml: @tyml ) %>')
+  $('.container').prepend('<%= j(render '/users/tyml_partial', tyml: @tyml ) %>')
 };
 
