@@ -22,6 +22,10 @@ class TymlsController < ApplicationController
 
   end
 
+  def edit
+
+  end
+
   def new
     @autocomplete_items = current_user.autocomplete_contacts
 
