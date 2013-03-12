@@ -5,12 +5,10 @@
 
 <%= javascript_tag "var autocomplete_items = #{ @autocomplete_items.to_json };" %>
 
-
-
 <%= form_for(Tyml.new, remote: true) do |f| %>
 
-    <%= text_field :url, nil, :placeholder => "Enter URL here" %>
-    <%= text_field :receiver_id, nil, :placeholder => "Email", :id => "auto_complete", :autocomplete => "off" %>
+    <%= f.text_field :url, :placeholder => "Enter URL here" %>
+    <%= f.text_field :receiver_id, :placeholder => "Email", :id => "auto_complete", :autocomplete => "off" %>
     <%= f.text_area :note, :placeholder => "Note (optional)", :rows => "2" %>
 
     <%= f.hidden_field :sender_id, :value => @current_user.id unless @current_user.nil? %>
@@ -21,8 +19,6 @@
   </div>
 
 <% end -%>
-
-
 
   </div>
 </div>
