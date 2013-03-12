@@ -2,41 +2,29 @@ TYML2::Application.routes.draw do
 
   root :to => 'Users#dashboard'
 
-  #signin/signout routes
-  get '/signin', :controller => 'sessions', :action => 'new', :as => 'new_session'
-  post '/sessions', :controller => 'sessions', :action => 'create', :as => 'sign_in'
-  delete '/sign-out', :controller => 'sessions', :action => 'destroy', :as => 'sessions'
+  resources :sessions, :only => [ :create, :new, :destroy]
+  match '/signin' => 'sessions#new', :as => 'signin'
+  match '/sign-out' => 'sessions#destroy', :as => 'signout'
 
-  #sign-up flow
-  get '/signup', :controller => 'create_accounts', :action => 'new', :as => 'new_user_registration'
-  post '/users', :controller => 'create_accounts', :action => 'create', :as => 'user_registration'
-  post '/signup/:reset_password_token', :controller => 'create_accounts', :action => 'confirm', as: 'confirm_url'
-  #redirected to after creating account signs user in for first time
-  get '/welcome', :controller => 'create_accounts', :action => 'welcome', :as => 'welcome'
+  resources :create_accounts, :only => [ :new, :create, :update ]
+  match '/signup' => 'create_accounts#new', :as => 'signup'
+  match '/signup/:reset_password_token' => 'create_accounts#update', :as => 'confirm'
+  match '/welcome' => 'create_accounts#welcome', :as => 'welcome'
 
-  #users dashboard
+  resources :users, :only => [ :update, :edit ]
   get '/dashboard', :controller => 'Users', :action => 'dashboard', :as => 'dashboard'
   get '/dashboard/sent', :controller => 'Users', :action => 'sent', :as => 'sent'
   get '/dashboard/contacts', :controller => 'Users', :action => 'contacts', :as => 'contacts'
-  get '/dashboard/settings', :controller => 'Users', :action => 'edit', :as => 'edit_user'
-  put '/users/:id', :controller => 'Users', :action => 'update'
+  match '/dashboard/settings' => 'users#edit', :as => 'settings'
+  match '/dashboard/contacts' => 'contacts#index'
 
-  #comment stuff
   resources :comments, :only => [ :create, :update, :destroy ]
 
-  #tyml stuff
-  post '/tymls', :controller => 'Tymls', :action => 'create', as: 'tymls'
-  put '/tymls/:id', :controller => 'Tymls', :action => 'update'
-  delete '/tymls/:id', :controller => 'Tymls', :action => 'destroy', :as => 'tyml'
-  get '/tymls/new', :controller => 'Tymls', :action => 'new', :as => 'new_tyml'
-
+  resources :tymls, :only => [ :create, :update, :destroy, :new ]
   put '/tymls/:id/mark_as_read', :controller => 'tymls', :action => 'mark_as_read', :as => 'mark_as_read'
 
-  #contacts stuff
-  post '/contacts', :controller => 'Contacts', :action => 'create'
-  delete '/contacts/:id', :controller => 'Contacts', :action => 'destroy', :as => 'contact'
+  resources :contacts, :only => [ :create, :destroy, :index ]
 
-  #static pages
   get '/faq', :controller => 'Statics', :action => 'faq', :as => 'faq'
 
 end
