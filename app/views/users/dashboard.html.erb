@@ -1,6 +1,5 @@
 <div class="container">
   <% @current_user.received_tymls.order('created_at desc').each do |tyml| %>
-    <% @tyml_comment = tyml %>
     <%= render '/tymls/tyml_partial', tyml: tyml %>
   <% end %>
 </div>
