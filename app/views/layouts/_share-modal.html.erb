@@ -5,7 +5,7 @@
 
 <%= javascript_tag "var autocomplete_items = #{ @autocomplete_items.to_json };" %>
 
-<%= form_for(Tyml.new, remote: true) do |f| %>
+<%= form_for(Tyml.new, url: tymls_url, method: 'post', remote: true) do |f| %>
 
     <%= f.text_field :url, :placeholder => "Enter URL here" %>
     <%= f.text_field :receiver_id, :placeholder => "Email", :id => "auto_complete", :autocomplete => "off" %>
