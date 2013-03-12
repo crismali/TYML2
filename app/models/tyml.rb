@@ -25,6 +25,9 @@ class Tyml < ActiveRecord::Base
     receiver_ids.each do |a_receiver_id|
       new_tyml = Tyml.new(tyml_params)
       new_tyml.receiver_id = a_receiver_id
+      unless new_tyml.url.include?('http://') || new_tyml.url.include?('https://')
+        new_tyml.url = 'http://' + new_tyml.url
+      end
       new_tyml.save
     end
   end
@@ -33,6 +36,9 @@ class Tyml < ActiveRecord::Base
     new_receiver_emails.each do |receiver_email|
       user = User.find_by_email(receiver_email)
       new_tyml = Tyml.new(tyml_params)
+      unless new_tyml.url.include?('http://') || new_tyml.url.include?('https://')
+        new_tyml.url = 'http://' + new_tyml.url
+      end
       c = Contact.new
       if user
         c.user_id = sender_id
