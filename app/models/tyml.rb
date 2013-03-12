@@ -18,12 +18,12 @@ class Tyml < ActiveRecord::Base
         receiver_names_emails.delete_at(receiver_names_emails.index(c.contact.email))
       end
     end
-    return receiver_ids.uniq!, receiver_names_emails
+    return receiver_ids.uniq, receiver_names_emails
   end
 
-  def create_tymls_with_receiver_ids(receiver_ids)
+  def create_tymls_with_receiver_ids(receiver_ids, tyml_params)
     receiver_ids.each do |a_receiver_id|
-      new_tyml = Tyml.new(params[:tyml])
+      new_tyml = Tyml.new(tyml_params)
       new_tyml.receiver_id = a_receiver_id
       new_tyml.save
     end
