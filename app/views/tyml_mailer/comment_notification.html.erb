@@ -1,0 +1,7 @@
+<h2>New comment from <%= @comment.user.name %></h2>
+
+<p><%= @comment.comment_text %></p>
+
+<p>Re: <%= link_to "#{@comment.tyml.url}", @comment.tyml.url %></p>
+
+Sign up for free <%= link_to 'here', new_user_registration_url %>!</strong></p>
