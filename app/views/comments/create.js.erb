@@ -1,2 +1,2 @@
-$('#tyml_comments_<%= @tyml.id %>').append('<%= j(render 'tymls/comment', :comment => @comment) %>').slideDown(400);
-$('.comment-text').val('');
+$('#tyml_comment_form_<%= @comment.tyml.id %>').before('<%= j(render('comments/comment', :comment => @comment)) %>').slideDown(400);
+$('#tyml_comment_form_field_<%= @comment.tyml.id %>').val('');
