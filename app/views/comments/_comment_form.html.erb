@@ -1,6 +1,6 @@
-<div class="comment-form">
-  <%= form_for Comment.new do |f| -%>
-    <%= f.text_field :comment_text, placeholder: 'Leave a comment' %>
+<div class="comment-form" id="tyml_comment_form_<%= tyml.id %>">
+  <%= form_for(Comment.new, remote: true) do |f| -%>
+    <%= f.text_field :comment_text, placeholder: 'Leave a comment', id: "tyml_comment_form_field_#{tyml.id}", :autocomplete => "off" %>
     <%= f.hidden_field :user_id, :value => @current_user.id %>
     <%= f.hidden_field :tyml_id, :value => tyml.id %>
     <%= f.submit "Reply" %>
