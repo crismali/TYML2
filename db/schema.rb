@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310225859) do
+ActiveRecord::Schema.define(:version => 20130314004306) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(:version => 20130310225859) do
     t.string   "receiver_id"
     t.string   "url"
     t.string   "note"
-    t.boolean  "viewed",      :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "archived",    :default => false
+    t.boolean  "viewed",           :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "archived",         :default => false
+    t.boolean  "sender_deleted",   :default => false
+    t.boolean  "receiver_deleted", :default => false
   end
 
   create_table "users", :force => true do |t|
@@ -54,10 +56,12 @@ ActiveRecord::Schema.define(:version => 20130310225859) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.boolean  "confirmed",              :default => false
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.boolean  "confirmed",                      :default => false
+    t.integer  "sign_in_count",                  :default => 0
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+    t.boolean  "receive_new_tyml_notifications", :default => true
+    t.boolean  "receive_comment_notifications",  :default => true
   end
 
 end
