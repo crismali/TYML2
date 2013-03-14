@@ -6,6 +6,15 @@ class Tyml < ActiveRecord::Base
   belongs_to :receiver, :class_name => 'User', :foreign_key => 'receiver_id'
   has_many :comments
 
+  before_save :add_http_to_url?
+
+  def add_http_to_url?
+    unless self.url.include?('http://') || self.url.include?('https://')
+      self.url = "http://#{self.url}"
+    end
+  end
+
+
   after_save :send_notification
 
   def send_notification
@@ -32,7 +41,6 @@ class Tyml < ActiveRecord::Base
     receiver_ids.each do |a_receiver_id|
       new_tyml = Tyml.new(tyml_params)
       new_tyml.receiver_id = a_receiver_id
-      new_tyml.add_http_to_url?
       new_tyml.save
     end
   end
@@ -41,7 +49,6 @@ class Tyml < ActiveRecord::Base
     new_receiver_emails.each do |receiver_email|
       user = User.find_by_email(receiver_email)
       new_tyml = Tyml.new(tyml_params)
-      new_tyml.add_http_to_url?
       c = Contact.new
       if user
         c.user_id = sender_id
@@ -64,13 +71,6 @@ class Tyml < ActiveRecord::Base
       end
     end
   end
-
-  def add_http_to_url?
-    unless self.url.include?('http://') || self.url.include?('https://')
-      self.url = "http://#{self.url}"
-    end
-  end
-
 
 
 end
