@@ -6,6 +6,13 @@ class Tyml < ActiveRecord::Base
   belongs_to :receiver, :class_name => 'User', :foreign_key => 'receiver_id'
   has_many :comments
 
+  after_save :send_notification
+
+  def send_notification
+    TymlMailer.new_tyml_notification(self).deliver if receiver.receive_new_tyml_notifications
+    return true
+  end
+
   def get_receiver_ids
     receiver_ids = Array.new
     receiver_names_emails = receiver_id.split(',').each {|x| x.strip!}
