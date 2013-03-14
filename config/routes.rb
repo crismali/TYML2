@@ -2,7 +2,7 @@ TYML2::Application.routes.draw do
 
   root :to => 'Users#dashboard'
 
-  resources :sessions, :only => [ :create, :new, :destroy]
+  resources :sessions, :only => [ :create, :new ]
   get '/signin' => 'sessions#new', :as => 'signin'
   delete '/sign-out' => 'sessions#destroy', :as => 'signout'
 
