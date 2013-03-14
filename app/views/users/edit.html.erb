@@ -1,9 +1,19 @@
+<ul>
 <%= form_for @current_user do |f| -%>
-
+<li>
+  <%= f.label :name %>
   <%= f.text_field :name, placeholder: 'Name', value: @current_user.name %>
-
-
-
-  <%= f.submit, 'Update' %>
+  </li>
+<li>
+  <%= f.label :receive_new_tyml_notifications %>
+  <%= f.check_box :receive_new_tyml_notifications %>
+</li>
+<li>
+  <%= f.label :receive_comment_notifications %>
+  <%= f.check_box :receive_comment_notifications %>
+</li>
+<li>
+  <%= f.submit 'Update Settings' %>
 
 <% end -%>
+</ul>
