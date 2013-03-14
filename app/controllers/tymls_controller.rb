@@ -34,9 +34,6 @@ class TymlsController < ApplicationController
 
     @tyml.create_users_and_tymls_via_new_receiver_emails(new_receiver_emails, params[:tyml]) unless new_receiver_emails.empty?
 
-
-    #these should be sending email notifications, unless the receiver has opted out of the emails
-
     respond_to do |format|
       format.js
     end
