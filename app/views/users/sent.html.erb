@@ -1,5 +1,5 @@
 <div class="container">
-  <% @current_user.sent_tymls.order('created_at desc').each do |tyml| %>
+  <% @sent_tymls.each do |tyml| %>
     <%= render '/tymls/tyml_partial', tyml: tyml %>
   <% end %>
 </div>
