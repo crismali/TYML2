@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def dashboard
     @autocomplete_items = current_user.autocomplete_contacts
   end
@@ -17,5 +16,8 @@ class UsersController < ApplicationController
     @autocomplete_items = current_user.autocomplete_contacts
   end
 
+  def edit
+
+  end
 
 end
