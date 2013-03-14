@@ -1,0 +1,9 @@
+<%= form_for @current_user do |f| -%>
+
+  <%= f.text_field :name, placeholder: 'Name', value: @current_user.name %>
+
+
+
+  <%= f.submit, 'Update' %>
+
+<% end -%>
