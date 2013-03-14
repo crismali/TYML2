@@ -13,7 +13,7 @@ class TymlMailer < ActionMailer::Base
     if comment.user == comment.tyml.sender && @comment.tyml.receiver.receive_comment_notifications
       mail to: @comment.tyml.receiver.email, subject: "TYML: New comment from #{@comment.tyml.sender.name}"
     elsif @comment.tyml.sender.receive_comment_notifications
-      mail to: @comment.tyml.sender.email, subject: "TYML: New comment from #{@comment.receiver.name}"
+      mail to: @comment.tyml.sender.email, subject: "TYML: New comment from #{@comment.tyml.receiver.name}"
     end
   end
 end
