@@ -24,4 +24,9 @@ class UsersController < ApplicationController
 
   end
 
+  def update
+    @current_user.update_attributes(params[:user])
+    redirect_to settings_url
+  end
+
 end
