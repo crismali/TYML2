@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314004306) do
+ActiveRecord::Schema.define(:version => 20130315060850) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130314004306) do
     t.datetime "updated_at",                                        :null => false
     t.boolean  "receive_new_tyml_notifications", :default => true
     t.boolean  "receive_comment_notifications",  :default => true
+    t.string   "remember_token"
   end
 
 end
