@@ -4,12 +4,12 @@ Contact.destroy_all
 Comment.destroy_all
 
 users = [
-  {name: 'Mike McGee', email: 'mike@starterleague.com', profile_pic: 'http://assets2.starterleague.com/assets/mike-mcgee-16075ffb857b541ef073ddb483c9bca6.jpg', bio: 'I did cool things', location: 'Chicago, IL', password: 'woohoo', confirmed: true },
-  {name: 'Michael Crismali', email: 'michael.crismali@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/michael-crismali-01525144b8bc333ee687fbb51832f2ca.jpg', bio: 'I went to a hippy school', location: 'Chicago, IL', password: 'woohoo', confirmed: true },
-  {name: 'Natasha Postolovski', email: 'npostolovski@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/natasha-postolovski-709bd16708b02bffca8a35e9c75ac809.jpg', bio: 'I did even cooler things', location: 'Melbourne, AU', password: 'woohoo', confirmed: true },
-  {name: 'Peter Ostrander', email: 'peter.ostrander@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/peter-ostrander-33542548f4158794e11eb689e08eec6c.jpg', bio: 'I have to go to the airport', location: 'Chicago, IL', password: 'woohoo', confirmed: true },
-  {name: 'Elizabeth Park', email: 'elibeee@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/elizabeth-park-42c231497c42a6bf78202b8541188f9b.jpg', bio: 'I like mockups', location: 'Chicago, IL', password: 'woohoo', confirmed: true },
-  {name: 'Archie Algas', email: 'archie.algas@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/archie-algas-8cb8248639404527654c53b61a1df0e5.jpg', bio: 'I like mockups even more', location: 'Chicago, IL', password: 'woohoo', confirmed: true }
+  {name: 'Mike McGee', email: 'mike@starterleague.com', profile_pic: 'http://assets2.starterleague.com/assets/mike-mcgee-16075ffb857b541ef073ddb483c9bca6.jpg', bio: 'I did cool things', location: 'Chicago, IL', password: 'woohoo', confirmed: true, remember_token: '1' },
+  {name: 'Michael Crismali', email: 'michael.crismali@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/michael-crismali-01525144b8bc333ee687fbb51832f2ca.jpg', bio: 'I went to a hippy school', location: 'Chicago, IL', password: 'woohoo', confirmed: true, remember_token: '2' },
+  {name: 'Natasha Postolovski', email: 'npostolovski@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/natasha-postolovski-709bd16708b02bffca8a35e9c75ac809.jpg', bio: 'I did even cooler things', location: 'Melbourne, AU', password: 'woohoo', confirmed: true, remember_token: '3' },
+  {name: 'Peter Ostrander', email: 'peter.ostrander@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/peter-ostrander-33542548f4158794e11eb689e08eec6c.jpg', bio: 'I have to go to the airport', location: 'Chicago, IL', password: 'woohoo', confirmed: true, remember_token: '5' },
+  {name: 'Elizabeth Park', email: 'elibeee@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/elizabeth-park-42c231497c42a6bf78202b8541188f9b.jpg', bio: 'I like mockups', location: 'Chicago, IL', password: 'woohoo', confirmed: true, remember_token: '4' },
+  {name: 'Archie Algas', email: 'archie.algas@gmail.com', profile_pic: 'http://portal.starterleague.com/assets/archie-algas-8cb8248639404527654c53b61a1df0e5.jpg', bio: 'I like mockups even more', location: 'Chicago, IL', password: 'woohoo', confirmed: true, remember_token: '9' }
 ]
 
 User.create users
