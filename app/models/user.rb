@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   def valid_email
     unless email[/.+@.+/]
-      errors.add(:receiver_email, "must be valid")
+      errors.add(:email, "must be valid")
     end
   end
 
