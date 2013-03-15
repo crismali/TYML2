@@ -26,6 +26,11 @@ class UsersController < ApplicationController
 
   def update
     @current_user.update_attributes(params[:user])
+    @current_user.remember_token = SecureRandom.urlsafe_base64
+    @current_user.save
+    unless cookies[:remember_token].nil?
+      cookies.permanent[:remember_token] = @current_user.remember_token
+    end
     redirect_to settings_url
   end
 
