@@ -19,7 +19,7 @@ class CreateAccountsController < ApplicationController
 
     @user.reset_password_sent_at = Time.now
 
-    @user.reset_password_token = SecureRandom.hex(25)
+    @user.reset_password_token = SecureRandom.urlsafe_base64
 
     if @user.save
       #send email containing link to confirm account
@@ -36,7 +36,7 @@ class CreateAccountsController < ApplicationController
     unless @user.confirmed
       @user.reset_password_sent_at = Time.now
 
-      @user.reset_password_token = SecureRandom.hex(25)
+      @user.reset_password_token = SecureRandom.urlsafe_base64
 
       @user.save
 
@@ -53,6 +53,7 @@ class CreateAccountsController < ApplicationController
       @user.confirmed = true
       @user.reset_password_sent_at = nil
       @user.reset_password_token = nil
+      @user.remember_token = SecureRandom.urlsafe_base64
       @user.save
       session[:user_id] = @user.id
     else
