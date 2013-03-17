@@ -9,6 +9,7 @@
 
     <%= f.text_field :url, :placeholder => "Enter URL here" %>
     <%= f.text_field :receiver_id, :placeholder => "Email", :id => "auto_complete", :autocomplete => "off" %>
+    <%= f.text_field :statement, :placeholder => "Why might they like that?", :autocomplete => "off" %>
     <%= f.text_area :note, :placeholder => "Note (optional)", :rows => "2" %>
 
     <%= f.hidden_field :sender_id, :value => @current_user.id unless @current_user.nil? %>

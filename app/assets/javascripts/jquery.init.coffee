@@ -9,10 +9,18 @@ $ ->
       overlay.fadeIn speed
       $('body').css
         overflow: 'hidden'
+      $('#auto_complete').val('')
+      $('#tyml_note').val('')
+      $('#tyml_url').val('')
+      $('#tyml_statement').val('')
     else
       overlay.fadeOut speed
       $('body').css
         overflow: 'visible'
+
+
+  $('.note-form').on 'submit', ->
+    modalShareHideShow()
 
   $('[data-behavior="share-tyml"]').on "click", (e) ->
     e.preventDefault()

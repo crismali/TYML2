@@ -16,8 +16,13 @@
     <% else %>
       <div class="tyml-profile-image"><%= image_tag tyml.sender.profile_pic %></div>
     <% end %>
-    <p class="tyml-user"><%=  tyml.sender.name %> <span class="tyml-copy">thought you might like&hellip;</span></p>
-    <p class="tyml-because">You like movies and stuff</p>
+
+    <% if tyml.statement.blank? %>
+      <p class="tyml-user"><%=  tyml.sender.name %> <span class="tyml-copy">thought you might like&hellip;</span></p>
+    <% else %>
+      <p class="tyml-user"><%=  tyml.sender.name %> <span class="tyml-copy">thought you might like this because&hellip;</span></p>
+      <p class="tyml-because"><%= tyml.statement %></p>
+    <% end %>
     <p class="tyml-url"><%=  link_to tyml.url, tyml.url, :title => tyml.url, :target => '_blank' %></p>
   </header>
 
