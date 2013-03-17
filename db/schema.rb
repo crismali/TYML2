@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315060850) do
+ActiveRecord::Schema.define(:version => 20130317041642) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20130315060850) do
     t.datetime "updated_at",   :null => false
   end
 
+  add_index "comments", ["tyml_id"], :name => "index_comments_on_tyml_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "contacts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "contact_id"
@@ -28,9 +31,11 @@ ActiveRecord::Schema.define(:version => 20130315060850) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "contacts", ["contact_id"], :name => "index_contacts_on_contact_id"
+  add_index "contacts", ["user_id"], :name => "index_contacts_on_user_id"
+
   create_table "tymls", :force => true do |t|
     t.integer  "sender_id"
-    t.string   "receiver_id"
     t.string   "url"
     t.string   "note"
     t.boolean  "viewed",           :default => false
@@ -39,7 +44,11 @@ ActiveRecord::Schema.define(:version => 20130315060850) do
     t.boolean  "archived",         :default => false
     t.boolean  "sender_deleted",   :default => false
     t.boolean  "receiver_deleted", :default => false
+    t.integer  "receiver_id"
   end
+
+  add_index "tymls", ["receiver_id"], :name => "index_tymls_on_receiver_id"
+  add_index "tymls", ["sender_id"], :name => "index_tymls_on_sender_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -64,5 +73,8 @@ ActiveRecord::Schema.define(:version => 20130315060850) do
     t.boolean  "receive_comment_notifications",  :default => true
     t.string   "remember_token"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end
