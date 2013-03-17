@@ -29,3 +29,11 @@ $ ->
   $(window).on "keyup", (e) ->
     if e.which is 27 and $('.modal-overlay').is(':visible')
       modalShareHideShow()
+
+  $('p.tyml-url').embedly
+    maxWidth: 450
+    wmode: 'transparent'
+    method: 'after'
+    key:':08733383f86a47f1a66ea5dfa481ca02'
+
+
