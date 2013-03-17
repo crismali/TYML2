@@ -1,0 +1,1 @@
+<%= link_to (tyml.liked ? 'Unlike' : 'Like'), like_or_unlike_url(tyml), :method => 'put', :remote => true, id: "like_tyml_#{tyml.id}" %>

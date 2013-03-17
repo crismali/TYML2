@@ -24,6 +24,7 @@ TYML2::Application.routes.draw do
   put '/tymls/:id/mark_as_read', :controller => 'tymls', :action => 'mark_as_read', :as => 'mark_as_read'
   put '/tymls/:id/view', :controller => 'tymls', :action => 'view', :as => 'view'
   put '/tymls/:id/archive', :controller => 'tymls', :action => 'archive_or_unarchive', :as => 'archive_or_unarchive'
+  put '/tymls/:id/like', :controller => 'tymls', :action => 'like_or_unlike', :as => 'like_or_unlike'
 
   resources :contacts, :only => [ :create, :destroy, :index ]
 

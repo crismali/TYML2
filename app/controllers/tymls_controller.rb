@@ -8,7 +8,7 @@ class TymlsController < ApplicationController
     end
   end
 
-  before_filter :proper_account_changing_tyml, :only => [ :mark_as_read, :view, :archive_or_unarchive ]
+  before_filter :proper_account_changing_tyml, :only => [ :mark_as_read, :view, :archive_or_unarchive, :like_or_unlike ]
 
   def proper_account_changing_tyml
     @tyml = Tyml.find(params[:id])
@@ -74,6 +74,15 @@ class TymlsController < ApplicationController
 
   def archive_or_unarchive
     @tyml.archived = !@tyml.archived
+    if @tyml.save
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def like_or_unlike
+    @tyml.liked = !@tyml.liked
     if @tyml.save
       respond_to do |format|
         format.js

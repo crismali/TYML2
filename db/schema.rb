@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317174836) do
+ActiveRecord::Schema.define(:version => 20130317204854) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130317174836) do
     t.boolean  "sender_deleted",   :default => false
     t.boolean  "receiver_deleted", :default => false
     t.integer  "receiver_id"
+    t.boolean  "liked",            :default => false
   end
 
   add_index "tymls", ["sender_id"], :name => "index_tymls_on_sender_id"
