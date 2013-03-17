@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317041642) do
+ActiveRecord::Schema.define(:version => 20130317174836) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20130317041642) do
     t.integer  "receiver_id"
   end
 
-  add_index "tymls", ["receiver_id"], :name => "index_tymls_on_receiver_id"
   add_index "tymls", ["sender_id"], :name => "index_tymls_on_sender_id"
 
   create_table "users", :force => true do |t|
