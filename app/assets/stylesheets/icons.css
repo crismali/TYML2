@@ -10,6 +10,7 @@
 }
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
+/*
 [data-icon]:before {
 	font-family: 'ap-icons';
 	content: attr(data-icon);
@@ -20,6 +21,7 @@
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
+*/
 
 /* Use the following CSS code if you want to have a class per icon */
 /*
@@ -27,6 +29,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
+/*
 [class*="icon-"] {
 	font-size: 1.333333333em;
 }
@@ -39,6 +42,7 @@ a[class*="icon-"] {
 a[class*="icon-"]:hover {
 	color: #777 !important;
 }
+*/
 .icon-like, .icon-delete, .icon-share, .icon-archive {
 	font-family: 'ap-icons';
 	speak: none;
