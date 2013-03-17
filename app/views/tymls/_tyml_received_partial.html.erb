@@ -12,10 +12,10 @@
 
   <header class="tyml-header">
     <nav>
-       <%= link_to '"', archive_or_unarchive_url(tyml), :class => 'icon-archive', :method => 'put', :remote => true %>
-         <%= link_to '#', tyml_url(tyml), :class => 'icon-delete', :method => 'delete', :remote => true %>
-         <%= link_to (tyml.liked ? '!' : '!'), like_or_unlike_url(tyml), :class => 'icon-like', :method => 'put', :remote => true, id: "like_tyml_#{tyml.id}" %>
-         <a class="reshare icon-share" href="#share" data-behavior="share-tyml" data-url="<%= tyml.url %>">$</a>
+      <%= link_to (tyml.liked ? '!' : '!'), like_or_unlike_url(tyml), :class => 'icon-like', :method => 'put', :remote => true, id: "like_tyml_#{tyml.id}" %>
+      <a class="reshare icon-share" href="#share" data-behavior="share-tyml" data-url="<%= tyml.url %>">$</a>
+      <%= link_to '"', archive_or_unarchive_url(tyml), :class => 'icon-archive', :method => 'put', :remote => true %>
+      <%= link_to '#', tyml_url(tyml), :class => 'icon-delete', :method => 'delete', :remote => true %>
     </nav>
     <% if tyml.sender.profile_pic.blank? %>
       <div class="tyml-profile-image"><%= image_tag asset_path('default_avatar.png') %></div>

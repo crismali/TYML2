@@ -28,7 +28,16 @@ you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
 [class*="icon-"] {
-	font-size: 2em;
+	font-size: 1.333333333em;
+}
+[class*="icon-"] + [class*="icon-"] {
+	margin-left: 0.5em;
+}
+a[class*="icon-"] {
+	color: #aaa !important;
+}
+a[class*="icon-"]:hover {
+	color: #777 !important;
 }
 .icon-like, .icon-delete, .icon-share, .icon-archive {
 	font-family: 'ap-icons';
