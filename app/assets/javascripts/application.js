@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$('document').ready(function(){
+        $('p.tyml-url').embedly({
+          maxWidth: 450,
+          wmode: 'transparent',
+          method: 'after',
+          key:':08733383f86a47f1a66ea5dfa481ca02'
+        });
+      });
