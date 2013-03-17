@@ -17,6 +17,7 @@
       <div class="tyml-profile-image"><%= image_tag tyml.sender.profile_pic %></div>
     <% end %>
     <p class="tyml-user"><%=  tyml.sender.name %> <span class="tyml-copy">thought you might like&hellip;</span></p>
+    <p class="tyml-because">You like movies and stuff</p>
     <p class="tyml-url"><%=  link_to tyml.url, tyml_url(tyml, :viewed => 'true'), :method => 'put', :title => tyml.url, :target => '_blank' %></p>
   </header>
 
