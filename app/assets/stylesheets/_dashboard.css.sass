@@ -54,13 +54,14 @@
       display: block
       font-size: 0.75em
 .tyml-url
-  color: #3f9aff
-  white-space: nowrap
-  overflow: hidden
-  text-overflow: ellipsis
-  font-size: 1.333333333em
-  a
+  color: $text_color
+  > a
+    font-size: 1.333333333em
     color: #3f9aff
+    display: block
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
   img,
   iframe
     max-width: 100%
@@ -111,6 +112,8 @@
   background: #00adef
   display: inline-block
   margin-left: -2em
+  margin-top: 0.5em
+  margin-bottom: 1em
   padding: 0.5em 1em 0.5em 2em
   color: white
   font-weight: bold
@@ -128,7 +131,8 @@
   @include respond-to(xsmall)
     display: block
     padding: 0.5em 1em
-    margin: 0 -1.5em
+    margin-left: -1.5em
+    margin-right: -1.5em
     text-align: center
     &:after
       border-width: 0.25em

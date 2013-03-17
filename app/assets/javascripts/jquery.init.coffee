@@ -33,7 +33,10 @@ $ ->
   $('p.tyml-url').embedly
     maxWidth: 450
     wmode: 'transparent'
-    method: 'after'
-    key:':08733383f86a47f1a66ea5dfa481ca02'
+    method: 'replace'
+    key: ':08733383f86a47f1a66ea5dfa481ca02'
+    className: 'embedly group'
+    query:
+      chars: 180
 
 
