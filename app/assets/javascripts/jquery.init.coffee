@@ -1,7 +1,7 @@
 $ ->
   $('#auto_complete').typeahead
     source: autocomplete_items
-  
+
   modalShareHideShow = ->
     overlay = $('.modal-overlay')
     speed = 300
@@ -21,7 +21,7 @@ $ ->
   $('.modal-overlay').on "click", (e) ->
     e.preventDefault()
     modalShareHideShow()
-  
+
   # prevent modal from closing if clicking inside form
   $('.modal-overlay .share-container').on "click", (e) ->
     e.stopPropagation()

@@ -1,31 +1,49 @@
 .tyml-container
   background: white
-  margin-bottom: 1em
+  margin: 1em 1em 1em 4.444444444em
   padding: 1em
   position: relative
   line-height: 1.4
   -webkit-border-radius: 2px
   -moz-border-radius: 2px
   border-radius: 2px
+  font-family: 'proxima-nova', Helvetica, sans-serif
+  font-weight: normal
+  + .tyml-container
+    margin-top: 3em
+  -webkit-box-shadow: 0 0 7px rgba(black, 0.15)
+  -moz-box-shadow: 0 0 7px rgba(black, 0.15)
+  box-shadow: 0 0 7px rgba(black, 0.15)
+  @include respond-to(xsmall)
+    margin: 1em 5%
+
+.tyml-container a
+  color: #3f9aff
+
+.tyml-header
+
 .tyml-profile-image
-  width: 4em
-  height: 4em
-  float: left
+  overflow: hidden
+  width: 3.333333333em
+  height: 3.333333333em
+  margin: 0.5em 0 0 -4.444444444em
+  position: absolute
+  left: 0
+  top: 0
+  border: 3px solid white
+  -webkit-border-radius: 50%
+  -moz-border-radius: 50%
+  border-radius: 50%
+  text-align: center
   img
     width: 100%
     height: auto
-    -webkit-border-radius: 50%
-    -moz-border-radius: 50%
-    border-radius: 50%
   @include respond-to(xsmall)
-    width: 5em
-    height: 5em
+    position: relative
     margin: 0 auto 0.5em auto
     float: none
-
 .tyml-user
   font-weight: 600
-  padding-left: 5em
   span
     display: inline-block
     font-weight: 300
@@ -35,29 +53,34 @@
     span
       display: block
       font-size: 0.75em
-
-.tyml-content-wrap
-  padding-left: 5em
-  @include respond-to(xsmall)
-    float: none
-    padding-left: 0
-
 .tyml-url
-  padding-top: 0.4em
+  color: #3f9aff
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  font-size: 1.333333333em
+  a
+    color: #3f9aff
   @include respond-to(xsmall)
     text-align: center
     clear: left
 
+.tyml-content-wrap
+  @include respond-to(xsmall)
+    float: none
+    padding-left: 0
+
 .tyml-note
   padding-top: 0.4em
-  font-style: oblique
-  &:after,
-  &:before
-    content: "\""
+  time
+    font-size: .777777778em
+    color: #a2a2a2
   @include respond-to(xsmall)
     text-align: center
 
+
 .tyml-viewed
+  display: none
   position: absolute
   top: 1em
   right: 1em
