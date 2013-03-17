@@ -28,7 +28,7 @@ class TymlsController < ApplicationController
 
   def create
 
-    receiver_ids, new_receiver_emails = @tyml.get_receiver_ids
+    receiver_ids, new_receiver_emails = @tyml.get_receiver_ids(params[:tyml][:receiver_id])
 
     @tyml.create_tymls_with_receiver_ids(receiver_ids, params[:tyml]) unless receiver_ids.nil?
 
@@ -83,7 +83,15 @@ class TymlsController < ApplicationController
 
   def destroy
     @tyml = Tyml.find(params[:id])
-    @tyml.destroy
+    if @tyml.sender_id == @current_user.id
+      @tyml.sender_deleted = true
+    else
+      @tyml.receiver_deleted = true
+    end
+
+    if @tyml.receiver_deleted && @tyml.sender_deleted
+      @tyml.destroy
+    end
     respond_to do |format|
       format.js
     end
