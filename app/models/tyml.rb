@@ -14,17 +14,15 @@ class Tyml < ActiveRecord::Base
     end
   end
 
-
-  after_save :send_notification
+  after_create :send_notification
 
   def send_notification
     TymlMailer.new_tyml_notification(self).deliver if receiver.receive_new_tyml_notifications
-    return true
   end
 
-  def get_receiver_ids
+  def get_receiver_ids(params_receiver_id)
     receiver_ids = Array.new
-    receiver_names_emails = receiver_id.split(',').each {|x| x.strip!}
+    receiver_names_emails = params_receiver_id.split(',').each {|x| x.strip!}
     sender.contacts.each do |c|
       if receiver_names_emails.include?(c.contact.name)
         receiver_ids << c.contact_id
