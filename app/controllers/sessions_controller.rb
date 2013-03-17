@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_email(params[:email])
-    if @user.present? && @user.confirmed && @user.authenticate(params[:password])
+    if @user.present? && @user.authenticate(params[:password]) # && @user.confirmed
       @user.last_sign_in_ip = @user.current_sign_in_ip
       @user.current_sign_in_ip = request.remote_ip
       @user.last_sign_in_at = @user.current_sign_in_at
