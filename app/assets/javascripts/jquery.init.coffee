@@ -39,4 +39,7 @@ $ ->
     query:
       chars: 180
 
+  $(".reshare").on "click", ->
+    url = $(this).attr("data-url")
+    $("#tyml_url").val url
 
