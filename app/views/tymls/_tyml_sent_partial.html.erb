@@ -14,7 +14,7 @@
     <% if tyml.statement.blank? %>
       <span class="tyml-copy">You thought <span class="tyml-user"><%= tyml.receiver.name.blank? ? tyml.receiver.email : tyml.receiver.name %></span> might like&hellip;</span>
     <% else %>
-      <span class="tyml-copy">You thought <span class="tyml-user"><%= tyml.receiver.name.blank? ? tyml.receiver.email : tyml.receiver.name %></span> might like this because&hellip;</span>
+      <p class="tyml-copy">You thought <span class="tyml-user"><%= tyml.receiver.name.blank? ? tyml.receiver.email : tyml.receiver.name %></span> might like this because&hellip;</p>
       <p class="tyml-because"><%= tyml.statement %></p>
     <% end %>
     <p class="tyml-url"><%=  link_to tyml.url, tyml.url, :title => tyml.url, :target => '_blank' %></p>
