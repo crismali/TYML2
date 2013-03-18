@@ -97,7 +97,7 @@ class TymlsController < ApplicationController
     else
       @tyml.receiver_deleted = true
     end
-
+    @tyml.save
     if @tyml.receiver_deleted && @tyml.sender_deleted
       @tyml.destroy
     end
