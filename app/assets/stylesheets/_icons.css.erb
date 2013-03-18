@@ -1,17 +1,18 @@
 @font-face {
 	font-family: 'ap-icons';
-	src:url(font-path('ap-icons.eot'));
-	src:url(font-path('ap-icons.eot') + "?#iefix") format('embedded-opentype'),
-      url(font-path('ap-icons.woff')) format('woff'),
-      url(font-path('ap-icons.ttf'))  format('truetype'),
-      url(font-path('ap-icons.svg') + "#MyFont") format('svg');
+	src:url('<%= asset_path('ap-icons-bdb3a1186be99cfd89d11a8a084e2265.eot') %>');
+	src:url('<%= asset_path('ap-icons-bdb3a1186be99cfd89d11a8a084e2265.eot') %>' + "?#iefix") format('embedded-opentype'),
+      url('<%= asset_path('ap-icons-5ab1577ef56bf34dcecad5bad0074c78.woff') %>') format('woff'),
+      url('<%= asset_path('ap-icons-bac0b255d1d6f65168d19ca0a2e8c063.ttf') %>')  format('truetype'),
+      url('<%= asset_path('ap-icons-665d9221b76222e8a465704686aa529c.svg') %>' + "#MyFont") format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
+
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
-/*
-[data-icon]:before {
+
+/*[data-icon]:before {
 	font-family: 'ap-icons';
 	content: attr(data-icon);
 	speak: none;
@@ -20,8 +21,8 @@
 	text-transform: none;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
-}
-*/
+}*/
+
 
 /* Use the following CSS code if you want to have a class per icon */
 /*
@@ -41,8 +42,8 @@ a[class*="icon-"] {
 }
 a[class*="icon-"]:hover {
 	color: #777 !important;
-}
-*/
+}*/
+
 .icon-like, .icon-delete, .icon-share, .icon-archive {
 	font-family: 'ap-icons';
 	speak: none;
@@ -66,5 +67,5 @@ a[class*="icon-"]:hover {
 }
 .icon-archive:before {
 	content: "\22";
-}
-*/
+}*/
+
