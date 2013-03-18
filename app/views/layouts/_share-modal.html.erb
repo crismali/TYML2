@@ -7,10 +7,17 @@
 
 <%= form_for(Tyml.new, url: tymls_url, method: 'post', remote: true) do |f| %>
 
-    <%= f.text_field :url, :placeholder => "Enter URL here" %>
-    <%= f.text_field :receiver_id, :placeholder => "Email", :id => "auto_complete", :autocomplete => "off" %>
-    <%= f.text_field :statement, :placeholder => "Why might they like that?", :autocomplete => "off" %>
-    <%= f.text_area :note, :placeholder => "Note (optional)", :rows => "2" %>
+    <%= f.label :receiver_id, 'You think...' %>
+    <%= f.text_field :receiver_id, :placeholder => "Email(s)", :id => "auto_complete", :autocomplete => "off" %>
+
+    <%= f.label :url, 'Might like...' %>
+    <%= f.text_field :url, :placeholder => "URL" %>
+
+    <%= f.label :statement, 'Because... (Optional)' %>
+    <%= f.text_field :statement, :placeholder => "Reason", :autocomplete => "off" %>
+
+    <%= f.label :note, 'Note (Optional)' %>
+    <%= f.text_area :note, :rows => "2" %>
 
     <%= f.hidden_field :sender_id, :value => @current_user.id unless @current_user.nil? %>
 
