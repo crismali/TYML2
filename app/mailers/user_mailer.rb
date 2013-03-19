@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "\"TYML\" <tyml@tyml.it>"
 
   def account_confirmation_email(user)
     @user = user
