@@ -3,6 +3,10 @@
   <div class="tyml-container group" >
 
   <header class="tyml-header">
+    <nav>
+      <a class="reshare icon-share" href="#share" data-behavior="share-tyml" data-url="<%= tyml.url %>">$</a>
+      <%= link_to '#', tyml_url(tyml), :class => 'icon-delete', :method => 'delete', :remote => true %>
+    </nav>
     <% if tyml.receiver.profile_pic.blank? %>
       <div class="tyml-profile-image"><%= image_tag asset_path('default_avatar.png') %></div>
     <% else %>
