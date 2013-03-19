@@ -47,6 +47,13 @@ $ ->
     query:
       chars: 180
 
+  $('.comment-note').embedly
+    maxWidth: 400
+    wmode: 'transparent'
+    method: 'replace'
+    key: ':08733383f86a47f1a66ea5dfa481ca02'
+    className: 'embedly group'
+
   $(".reshare").on "click", ->
     url = $(this).attr("data-url")
     $("#tyml_url").val url

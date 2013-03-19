@@ -10,4 +10,13 @@ class Comment < ActiveRecord::Base
     TymlMailer.comment_notification(self).deliver
   end
 
+  def include_image?
+  	c = comment_text
+  	if c.include?(".gif") || c.include?(".jpg") || c.include?(".png")
+			return true
+  	else
+  		return false
+  	end
+  end
+
 end
