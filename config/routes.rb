@@ -5,11 +5,13 @@ TYML2::Application.routes.draw do
   resources :sessions, :only => [ :create, :new ]
   get '/signin' => 'sessions#new', :as => 'signin'
   delete '/sign-out' => 'sessions#destroy', :as => 'signout'
+  get '/welcome' => 'sessions#welcome', :as => 'welcome'
 
-  resources :create_accounts, :only => [ :new, :create, :update ]
+  resources :create_accounts, :only => [ :new, :create ]
   get '/signup' => 'create_accounts#new', :as => 'signup'
-  put '/signup/:reset_password_token' => 'create_accounts#update', :as => 'confirm'
-  get '/welcome' => 'create_accounts#welcome', :as => 'welcome'
+  get '/signup/:id/:reset_password_token' => 'create_accounts#confirm', :as => 'confirm'
+  get '/check_your_email' => 'create_accounts#check_your_email', as: 'check_your_email'
+  put '/resend_confirmation_email' => 'create_accounts#resend_confirmation_email', as: 'resend_confirmation_email'
 
   resources :users, :only => [ :update, :edit ]
   get '/dashboard', :controller => 'Users', :action => 'dashboard', :as => 'dashboard'
