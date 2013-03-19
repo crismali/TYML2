@@ -18,11 +18,15 @@ class SessionsController < ApplicationController
       end
       redirect_to root_url, :notice => "Sign-in successful."
     else
-      redirect_to new_session_url, :notice => "Sign-in unsuccessful."
+      redirect_to signin_url, :notice => "Sign-in unsuccessful."
     end
   end
 
   def new
+
+  end
+
+  def welcome
 
   end
 
