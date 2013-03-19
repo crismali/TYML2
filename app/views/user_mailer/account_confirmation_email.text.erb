@@ -1,0 +1,9 @@
+Hey!
+
+<%= @user.name %>, confirm your account by clicking the link below:
+
+      <%= link_to "Click me to confirm!", confirm_url(@user.id, @user.reset_password_token) %>
+
+If you didn't register an account and have no idea what tyml, feel free to disregard this email.
+
+But in case you didn't know and are a little curious, TYML is the best way to share content with people you care about.
