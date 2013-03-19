@@ -11,8 +11,10 @@ class CreateAccountsController < ApplicationController
 
     @user = User.find_by_email(params[:user][:email])
 
-    if @user
-      @user.update_attributes(params[:user])
+    if @user && !@user.confirmed
+      @user.name = params[:user][:name]
+      @user.password = params[:user][:password]
+      @user.password_confirmation = params[:user][:password_confirmation]
     else
       @user = User.new(params[:user])
     end
@@ -22,10 +24,10 @@ class CreateAccountsController < ApplicationController
     @user.reset_password_token = SecureRandom.urlsafe_base64
 
     if @user.save
-      #send email containing link to confirm account
-      #redirect to page that tells them to go to their email to confirm account
+      UserMailer.account_confirmation_email(@user).deliver
+      redirect_to check_your_email_url
     else
-      redirect_to new_user_registration_url
+      redirect_to signup_url
     end
 
   end
@@ -33,20 +35,20 @@ class CreateAccountsController < ApplicationController
   def resend_confirmation_email
     @user = User.find_by_email(params[:email])
 
-    unless @user.confirmed
+    if @user && !@user.confirmed
       @user.reset_password_sent_at = Time.now
 
       @user.reset_password_token = SecureRandom.urlsafe_base64
 
       @user.save
 
-      #resend email
+      UserMailer.account_confirmation_email(@user).deliver
     end
-
+    redirect_to check_your_email_url
   end
 
   def confirm
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_id(params[:id])
 
     if @user && (Time.now - @user.reset_password_sent_at) < 60.minutes && @user.reset_password_token == params[:reset_password_token]
       reset_session
@@ -55,11 +57,11 @@ class CreateAccountsController < ApplicationController
       @user.reset_password_token = nil
       @user.remember_token = SecureRandom.urlsafe_base64
       @user.save
-      session[:user_id] = @user.id
+      session[:email] = @user.email
+      redirect_to welcome_url
     else
-      redirect_to new_user_registration_url
+      redirect_to signup_url
     end
-
   end
 
 end
