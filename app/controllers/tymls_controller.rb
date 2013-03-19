@@ -92,7 +92,10 @@ class TymlsController < ApplicationController
 
   def destroy
     @tyml = Tyml.find(params[:id])
-    if @tyml.sender_id == @current_user.id
+    if @tyml.sender_id == @current_user.id && @current_user.id == @tyml.receiver_id
+      @tyml.receiver_deleted = true
+      @tyml.sender_deleted = true
+    elsif @tyml.sender_id == @current_user.id
       @tyml.sender_deleted = true
     else
       @tyml.receiver_deleted = true
