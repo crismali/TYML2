@@ -19,3 +19,10 @@
 <% end -%>
 </ul>
 </div>
+
+<div class="container">
+  Archived TYMLs
+  <% @archived_tymls.each do |tyml| %>
+    <%= render '/tymls/tyml_received_partial', tyml: tyml %>
+  <% end %>
+</div>
