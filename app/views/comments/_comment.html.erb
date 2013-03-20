@@ -1,10 +1,6 @@
 <div class="single-comment-wrap group">
   <div class="comment-profile-image"><%= image_tag comment.user.profile_pic %></div>
   <p class="comment-note">
-  	<% if comment.include_image? %>
-    	<span class="user-name"><%= comment.user.name %></span> &mdash; <a href="<%= comment.comment_text %>"><%= comment.comment_text %></a>
-    <% else %>
     	<span class="user-name"><%= comment.user.name %></span> &mdash; <%= comment.comment_text %></a>
-    <% end %>
   </p>
 </div>
