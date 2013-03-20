@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap
+//= require embedly.min
+//= require jquery.init
+
+
 
 
