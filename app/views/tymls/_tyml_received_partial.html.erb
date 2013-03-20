@@ -15,7 +15,7 @@
       <%= link_to '!', like_or_unlike_url(tyml), :class => 'icon-like' + (tyml.liked ? ' liked' : ''), :method => 'put', :title => (tyml.liked ? 'Unlike' : 'Like'), :remote => true, id: "like_tyml_#{tyml.id}" %>
       <a class="reshare icon-share" href="#share" title="Reshare" data-behavior="share-tyml" data-url="<%= tyml.url %>">$</a>
       <%= link_to '"', archive_or_unarchive_url(tyml), :class => 'icon-archive', :method => 'put', :title => 'Archive', :remote => true %>
-      <%= link_to '#', tyml_url(tyml), :class => 'icon-delete', :method => 'delete', :title => 'Delete', :remote => true %>
+      <%= link_to '#', tyml_url(tyml), :class => 'icon-delete', :method => 'delete', :remote => true, :confirm => "Are you sure you want to delete this TYML?" %>
     </nav>
 
     <div class="tyml-profile-image"><%= image_tag tyml.sender.profile_pic %></div>
