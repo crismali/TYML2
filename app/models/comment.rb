@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
 
   def include_image?
   	c = comment_text
-  	if c.include?(".gif") || c.include?(".jpg") || c.include?(".png")
+  	if c.include?(".gif") || c.include?(".jpg") || c.include?(".png") || c.include?(".jpeg")
 			return true
   	else
   		return false

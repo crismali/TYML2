@@ -2,7 +2,7 @@
   <div class="comment-profile-image"><%= image_tag comment.user.profile_pic %></div>
   <% if comment.include_image? %>
   <p class="comment-note">
-    	<span class="user-name"><%= comment.user.name %></span> &mdash; <a href="<%= comment.comment_text %>"><%= comment.comment_text %></a>
+    	<span class="user-name"><%= comment.user.name %></span> <a href="<%= comment.comment_text %>"><%= comment.comment_text %></a>
   </p>
   <% else %>
   <p class="comment-note">

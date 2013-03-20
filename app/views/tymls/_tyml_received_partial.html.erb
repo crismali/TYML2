@@ -17,11 +17,8 @@
       <%= link_to '"', archive_or_unarchive_url(tyml), :class => 'icon-archive', :method => 'put', :title => 'Archive', :remote => true %>
       <%= link_to '#', tyml_url(tyml), :class => 'icon-delete', :method => 'delete', :title => 'Delete', :remote => true %>
     </nav>
-    <% if tyml.sender.profile_pic.blank? %>
-      <div class="tyml-profile-image"><%= image_tag asset_path('default_avatar.png') %></div>
-    <% else %>
-      <div class="tyml-profile-image"><%= image_tag tyml.sender.profile_pic %></div>
-    <% end %>
+
+    <div class="tyml-profile-image"><%= image_tag tyml.sender.profile_pic %></div>
 
     <% if tyml.statement.blank? %>
       <p class="tyml-user"><%=  tyml.sender.name %> <span class="tyml-copy">thought you might like&hellip;</span></p>
