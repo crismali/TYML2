@@ -10,16 +10,22 @@ class Comment < ActiveRecord::Base
     TymlMailer.comment_notification(self).deliver
   end
 
-  def contains_embeddable_content?
-  	c = comment_text
-  	if  c.include?(".gif")    || c.include?(".jpg")     ||
-        c.include?(".png")    || c.include?(".jpeg")    ||
-        c.include?("http://") || c.include?("https://") ||
-        c.include?("www.")
-			return true
-  	else
-  		return false
-  	end
+  def format_for_embedly
+    c = comment_text
+
+    split_string = c.split.map! do |s|
+      if s.include?(".gif")    || s.include?(".jpg")     || 
+         s.include?(".png")    || s.include?(".jpeg")    || 
+         s.include?("http://") || s.include?("https://") || 
+         s.include?("www.")
+         s = "<a href='#{s}'>" + "#{s}" + "</a>"
+         s
+      else
+         s
+      end
+    end
+
+    split_string.join(' ')
   end
 
 end
