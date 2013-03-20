@@ -11,12 +11,14 @@
     </nav>
   </div>
 </header>
-<h1 class="logo-send">
-  <%= link_to "TYML", root_url %>
-<h1>
-<h2 class="tagline-send">
-  The best way to share content<br />with the people you care about.
-</h2>
+<div class="container">
+  <h1 class="logo-send">
+    <%= image_tag asset_path('logo-large.png'), :class => 'logo-home' %>
+  <h1>
+  <h2 class="tagline-send">
+    The best way to share content<br />with the people you care about.
+  </h2>
+</div>
 <% elsif @current_user.present? %>
 <header class="header group" role="banner">
   <div class="container">
