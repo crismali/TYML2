@@ -29,8 +29,10 @@
       <p class="tyml-user"><%=  tyml.sender.name %> <span class="tyml-copy">thought you might like this because&hellip;</span></p>
       <p class="tyml-because"><%= tyml.statement %></p>
     <% end %>
-    <p class="tyml-url"><%=  link_to tyml.url, tyml.url, :title => tyml.url, :target => '_blank' %></p>
   </header>
+  <div>
+    <p class="tyml-url"><%=  link_to tyml.url, tyml.url, :title => tyml.url, :target => '_blank' %></p>
+  </div>
 
 
 
