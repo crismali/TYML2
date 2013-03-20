@@ -16,9 +16,6 @@
     <%= f.label :statement, 'Because... (Optional)' %>
     <%= f.text_field :statement, :placeholder => "Reason", :autocomplete => "off" %>
 
-    <%= f.label :note, 'Note (Optional)' %>
-    <%= f.text_area :note, :rows => "2" %>
-
     <%= f.hidden_field :sender_id, :value => @current_user.id unless @current_user.nil? %>
 
     <div class="input-container">

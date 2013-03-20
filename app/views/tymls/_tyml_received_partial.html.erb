@@ -38,9 +38,7 @@
 
   <div class="tyml-content-wrap">
     <div class="tyml-note">
-      <% unless tyml.note.blank? %>
-        <p><%=  tyml.note %></p>
-      <% end %>
+
       <time datetime="<%= tyml.created_at %>"><%= "#{time_ago_in_words(tyml.created_at)} ago" %></time>
     </div>
 
