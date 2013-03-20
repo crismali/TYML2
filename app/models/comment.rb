@@ -10,9 +10,12 @@ class Comment < ActiveRecord::Base
     TymlMailer.comment_notification(self).deliver
   end
 
-  def include_image?
+  def contains_embeddable_content?
   	c = comment_text
-  	if c.include?(".gif") || c.include?(".jpg") || c.include?(".png") || c.include?(".jpeg")
+  	if  c.include?(".gif")    || c.include?(".jpg")     ||
+        c.include?(".png")    || c.include?(".jpeg")    ||
+        c.include?("http://") || c.include?("https://") ||
+        c.include?("www.")
 			return true
   	else
   		return false
