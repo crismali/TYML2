@@ -24,10 +24,10 @@ x.type='text/javascript';
 x.src='<%= root_url.gsub('http:', '') + asset_path("bookmarklet.init.js") %>';
 document.body.appendChild(x);
 
-$('body').prepend('<%= j(render '/layouts/share-modal', tyml: Tyml.new) %>');
+
+
+$('body').delay(5).prepend('<%= j(render '/layouts/share-modal', tyml: Tyml.new) %>');
 $('#tyml_url').val( $(location).attr('href') );
-$('.modal-overlay').fadeIn();
-
-
+$('.modal-overlay').delay(50).fadeIn();
 
 
