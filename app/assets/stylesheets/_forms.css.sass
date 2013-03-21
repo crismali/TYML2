@@ -11,6 +11,11 @@ select
   font-weight: 300
   color: #444
   margin-bottom: 0.25em
+  outline: 0
+  &:focus
+    -webkit-box-shadow: 0 0 4px 1px #6aa8d5
+    -moz-box-shadow: 0 0 4px 1px #6aa8d5
+    box-shadow: 0 0 4px 1px #6aa8d5
   @include respond-to(small)
     font-size: 1em
 
