@@ -1,34 +1,32 @@
-// <a href="javascript:var s = document.createElement('script');s.type='text/javascript';s.src='<%= new_tyml_url %>';document.body.appendChild(s);">dog</a>
-
+// <a href="javascript:var s = document.createElement('script');s.type='text/javascript';s.src='<%= new_tyml_url.gsub('http:','') %>';document.body.appendChild(s);">bookmarklet</a>
 
 
 var x;
 x = document.createElement('script');
 x.type='text/javascript';
-x.src='<%= root_url + asset_path("jquery.js") %>';
+x.src='<%= root_url.gsub('http:', '') + asset_path("jquery.js") %>';
+document.body.appendChild(x);
+
+x = document.createElement('script');
+x.type='text/javascript';
+x.src='<%= root_url.gsub('http:', '') + asset_path("bootstrap.js") %>';
 document.body.appendChild(x);
 
 x = document.createElement('link');
 x.rel="stylesheet";
 x.type='text/css';
-x.href='<%= "http://localhost:3000" + asset_path("application.css") %>';
-document.body.appendChild(x);
-
-
-x = document.createElement('script');
-x.type='text/javascript';
-x.src='<%= root_url + asset_path("bootstrap.js") %>';
+x.href='<%= root_url.gsub('http:', '') + asset_path("bookmarklet.css") %>';
 document.body.appendChild(x);
 
 x = document.createElement('script');
 x.type='text/javascript';
-x.src='<%= root_url + asset_path("jquerywithoutembedly.init.js") %>';
+x.src='<%= root_url.gsub('http:', '') + asset_path("bookmarklet.init.js") %>';
 document.body.appendChild(x);
 
-$('body').prepend('<%= j(render '/layouts/share-modal', tyml: Tyml.new) %>');
+
+
+$('body').delay(15).prepend('<%= j(render '/layouts/share-modal', tyml: Tyml.new) %>');
 $('#tyml_url').val( $(location).attr('href') );
-$('.modal-overlay').fadeIn();
-
-
+$('.modal-overlay').delay(50).fadeIn();
 
 

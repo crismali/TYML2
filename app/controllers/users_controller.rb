@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @archived_tymls = @current_user.received_tymls.where(archived: true, receiver_deleted: false).order('created_at desc')
   end
 
   def update

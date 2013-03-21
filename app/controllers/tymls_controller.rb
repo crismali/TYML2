@@ -34,8 +34,12 @@ class TymlsController < ApplicationController
 
     @tyml.create_users_and_tymls_via_new_receiver_emails(new_receiver_emails, params[:tyml]) unless new_receiver_emails.empty?
 
-    respond_to do |format|
-      format.js
+    if request.referer.include?(root_url)
+      respond_to do |format|
+        format.js
+      end
+    else
+      redirect_to request.referer
     end
 
   end

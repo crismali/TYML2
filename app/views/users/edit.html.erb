@@ -18,4 +18,13 @@
 
 <% end -%>
 </ul>
+<a href="javascript:var s = document.createElement('script');s.type='text/javascript';s.src='<%= new_tyml_url.gsub('http:','') %>';document.body.appendChild(s);">bookmarklet</a>
+
+</div>
+
+<div class="container">
+  Archived TYMLs
+  <% @archived_tymls.each do |tyml| %>
+    <%= render '/tymls/tyml_received_partial', tyml: tyml %>
+  <% end %>
 </div>
