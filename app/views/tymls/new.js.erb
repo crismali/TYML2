@@ -25,8 +25,8 @@ document.body.appendChild(x);
 
 
 
-$('body').delay(15).prepend('<%= j(render '/layouts/share-modal', tyml: Tyml.new) %>');
+$('body').delay(35).prepend('<%= j(render '/layouts/share-modal', tyml: Tyml.new) %>');
 $('#tyml_url').val( $(location).attr('href') );
-$('.modal-overlay').delay(50).fadeIn();
+$('.modal-overlay').delay(35).fadeIn();
 
 
