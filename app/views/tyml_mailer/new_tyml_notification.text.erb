@@ -8,8 +8,11 @@ Hey!
 
       <%= @tyml.sender.name %>
 
-      <%= link_to "Reply by signing up for TYML", root_url %>
+      <% if @tyml.receiver.confirmed %>
+        <%= link_to "Reply from your TYML dashboard", root_url %>
+      <% else %>
+        <%= link_to "Reply by signing up for TYML", root_url %>
+      <% end %>
 
 
-
-TYML is the best way to share content with people you care about. Sign up for free <%= link_to 'here', signup_url %>!
+TYML is the best way to share content with people you care about.

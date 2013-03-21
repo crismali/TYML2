@@ -4,7 +4,7 @@
  function extractor(query) {
         var result = /([^,]+)$/.exec(query);
         if(result && result[1])
-            return result[1].trim();
+            return result[1].toLowerCase().trim();
         return '';
     }
 
@@ -95,7 +95,8 @@
   , matcher: function (item) {
       var tquery = extractor(this.query);
           if(!tquery) return false;
-          return ~item.toLowerCase().indexOf(tquery)
+          // return ~item.toLowerCase().indexOf(tquery)
+          return ~item.indexOf(tquery)
     }
 
   , sorter: function (items) {

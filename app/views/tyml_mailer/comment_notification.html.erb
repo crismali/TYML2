@@ -4,4 +4,8 @@
 
 <p>Re: <%= link_to "#{@comment.tyml.url}", @comment.tyml.url %></p>
 
-Sign up for free <%= link_to 'here', signup_url %>!</strong></p>
+<% if @tyml.receiver.confirmed %>
+ <p><%= link_to "Reply from your TYML dashboard", root_url %></p>
+<% else %>
+ <p><%= link_to "Reply by signing up for TYML", root_url %></p>
+<% end %>
