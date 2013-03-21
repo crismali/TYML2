@@ -17,7 +17,9 @@ class Tyml < ActiveRecord::Base
   after_create :send_notification
 
   def send_notification
-    TymlMailer.new_tyml_notification(self).deliver if receiver.receive_new_tyml_notifications
+    if receiver.receive_new_tyml_notifications && sender_id != User.find_by_name("The TYML Team").id
+      TymlMailer.new_tyml_notification(self).deliver
+    end
   end
 
   def get_receiver_ids(params_receiver_id)
