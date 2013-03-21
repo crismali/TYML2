@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def authorize_user
     if current_user.nil?
-      redirect_to signin_url
+      redirect_to signup_url
     end
   end
 
