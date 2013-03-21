@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require embedly.min
+//= require jquery.fitvids.min
 //= require jquery.init
 
 

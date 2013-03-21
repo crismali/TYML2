@@ -38,7 +38,7 @@ $ ->
     if e.which is 27 and $('.modal-overlay').is(':visible')
       modalShareHideShow()
 
-  $('p.tyml-url').embedly
+  $('p.tyml-url a, .comment-note a').embedly
     maxWidth: 450
     wmode: 'transparent'
     method: 'replace'
@@ -46,13 +46,9 @@ $ ->
     className: 'embedly group'
     query:
       chars: 180
+    done: ->
+      $('.embedly').fitVids()
 
-  $('.comment-note').embedly
-    maxWidth: 400
-    wmode: 'transparent'
-    method: 'replace'
-    key: ':08733383f86a47f1a66ea5dfa481ca02'
-    className: 'embedly group'
 
   $(".reshare").on "click", ->
     url = $(this).attr("data-url")
