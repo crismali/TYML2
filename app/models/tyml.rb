@@ -1,6 +1,6 @@
 class Tyml < ActiveRecord::Base
 
-  attr_accessible :note, :receiver_id, :sender_id, :url, :viewed, :archived, :statement
+  attr_accessible :receiver_id, :sender_id, :url, :viewed, :archived, :statement
 
   belongs_to :sender, :class_name => 'User', :foreign_key => 'sender_id'
   belongs_to :receiver, :class_name => 'User', :foreign_key => 'receiver_id'
