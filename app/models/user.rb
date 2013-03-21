@@ -14,6 +14,15 @@ class User < ActiveRecord::Base
 
   validate :valid_email
 
+  after_create do
+    Tyml.create(sender_id: User.find_by_name("The TYML Team").id, url: "http://google.com",
+                receiver_id: self.id, statement: "Some kind of statement.")
+    Tyml.create(sender_id: User.find_by_name("The TYML Team").id, url: "http://google.com",
+                receiver_id: self.id, statement: "Some kind of statement.")
+    Tyml.create(sender_id: User.find_by_name("The TYML Team").id, url: "http://google.com",
+                receiver_id: self.id, statement: "Some kind of statement.")
+  end
+
   def valid_email
     unless email[/.+@.+/]
       errors.add(:email, "must be valid")

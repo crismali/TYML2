@@ -27,7 +27,7 @@ class CreateAccountsController < ApplicationController
       UserMailer.account_confirmation_email(@user).deliver
       redirect_to check_your_email_url
     else
-      redirect_to signup_url
+      render signup_url
     end
 
   end
