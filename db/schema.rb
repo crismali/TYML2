@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320041613) do
+ActiveRecord::Schema.define(:version => 20130321172747) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20130320041613) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "profile_pic",                    :default => "http://tyml2.herokuapp.com/assets/default_avatar-9a8427abf328907f5e983488bcc66bdb.png"
+    t.string   "profile_pic"
     t.string   "bio"
     t.string   "location"
     t.string   "password"
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(:version => 20130320041613) do
     t.string   "last_sign_in_ip"
     t.boolean  "confirmed",                      :default => false
     t.integer  "sign_in_count",                  :default => 0
-    t.datetime "created_at",                                                                                                                          :null => false
-    t.datetime "updated_at",                                                                                                                          :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.boolean  "receive_new_tyml_notifications", :default => true
     t.boolean  "receive_comment_notifications",  :default => true
     t.string   "remember_token"
