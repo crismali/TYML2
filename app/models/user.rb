@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :confirmed, :receive_comment_notifications
   attr_accessible :bio, :email, :location, :name, :profile_pic, :receive_new_tyml_notifications, :remember_token
+  mount_uploader :profile_pic, ProfilePicUploader
 
   validates_presence_of :email
   validates_uniqueness_of :email

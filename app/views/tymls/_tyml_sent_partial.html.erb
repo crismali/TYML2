@@ -7,11 +7,7 @@
       <a class="reshare icon-share" href="#share" data-behavior="share-tyml" data-url="<%= tyml.url %>">$</a>
       <%= link_to '#', tyml_url(tyml), :class => 'icon-delete', :method => 'delete', :remote => true, :confirm => "Are you sure you want to delete this TYML?" %>
     </nav>
-    <% if tyml.receiver.profile_pic.blank? %>
-      <div class="tyml-profile-image"><%= image_tag asset_path('default_avatar.png') %></div>
-    <% else %>
       <div class="tyml-profile-image"><%= image_tag tyml.receiver.profile_pic %></div>
-    <% end %>
 
 
 
