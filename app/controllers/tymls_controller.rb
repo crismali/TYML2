@@ -59,12 +59,8 @@ class TymlsController < ApplicationController
   end
 
   def new
+    @url = params[:url]
     @autocomplete_items = current_user.autocomplete_contacts
-
-    respond_to do |format|
-      format.js
-    end
-
   end
 
   def mark_as_read
