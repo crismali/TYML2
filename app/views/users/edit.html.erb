@@ -4,10 +4,15 @@
 <li>
   <%= f.label :name %>
   <%= f.text_field :name, placeholder: 'Name', value: @current_user.name %>
+  <br />
+  <br />
 </li>
 <li>
-  <%= f.label :profile_pic, "Your avatar" %><%= f.file_field :profile_pic %>
-  <p><img src="<%= @current_user.profile_pic %>" width="200"></p>
+  <%= f.label :profile_pic, "Your avatar" %>
+  <br />
+  <%= f.file_field :profile_pic %>
+  <p class="your-avatar"><img src="<%= @current_user.profile_pic %>" width="200"></p>
+  <br />
 </li>
 <li>
   <%= f.check_box :receive_new_tyml_notifications %>
@@ -22,12 +27,14 @@
 
 <% end -%>
 </ul>
-<a href="javascript:var s = document.createElement('script');s.type='text/javascript';s.src='<%= new_tyml_url.gsub('http:','') %>';document.body.appendChild(s);">bookmarklet</a>
-
+<p class="bookmarklet-wrap"><a href="javascript:var s = document.createElement('script');s.type='text/javascript';s.src='<%= new_tyml_url.gsub('http:','') %>';document.body.appendChild(s);" class="bookmarklet">Bookmarklet +</a>
+  <br />
+  <span>Drag the Bookmarklet above to your bookmarks bar and share TYMLs from anywhere!</span>
+</p>
 </div>
 
 <div class="container">
-  Archived TYMLs
+  <h1 class="title">Archived TYMLs</h1>
   <% @archived_tymls.each do |tyml| %>
     <%= render '/tymls/tyml_received_partial', tyml: tyml %>
   <% end %>
