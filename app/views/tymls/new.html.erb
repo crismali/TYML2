@@ -1,0 +1,18 @@
+<script type="text/javascript">
+
+$('.header').hide();
+
+$(document).ready(function(w){
+
+  $('#tyml_url').val('<%= @url %>');
+  $('.modal-overlay').delay(50).fadeIn();
+  $('.input-container').submit(function(){
+    $('.modal-overlay').fadeOut();
+    window.open('', '_self', '');
+     $('#tyml_url').val('hellow');
+    window.close();
+  });
+});
+
+
+</script>
