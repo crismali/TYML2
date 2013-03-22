@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   def autocomplete_contacts
     autocomplete_items = Array.new
-    contacts.each do |x|
+    contacts.to_a.each do |x|
       autocomplete_items << x.contact.email
       autocomplete_items << x.contact.name unless x.contact.name.nil?
     end
