@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   validate :valid_email
 
-  after_save do
+  after_create do
     team_id = User.find_by_email("tyml.app@gmail.com").id
     Tyml.create(sender_id: team_id, url: "http://picyor.com/", statement: "It's always fun to pick between two options!", receiver_id: self.id)
     Tyml.create(sender_id: team_id, url: "http://fundhero.org/", statement: "If you're interested in helping kids lead better lives, check this out.", receiver_id: self.id)
