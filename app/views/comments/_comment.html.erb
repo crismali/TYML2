@@ -1,5 +1,5 @@
 <div class="single-comment-wrap group">
-  <div class="comment-profile-image"><%= image_tag comment.user.profile_pic %></div>
+  <div class="comment-profile-image"<% if comment.user.profile_pic? %> style="background-image: url(<%= comment.user.profile_pic %>)"<% end %>></div>
   <p class="comment-note">
     	<span class="user-name"><%= comment.user.name %></span> &mdash; <%= raw comment.format_for_embedly %>
   </p>
