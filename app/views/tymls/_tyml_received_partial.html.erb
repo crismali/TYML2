@@ -18,7 +18,7 @@
       <%= link_to '#', tyml_url(tyml), :class => 'icon-delete', :method => 'delete', :remote => true, :confirm => "Are you sure you want to delete this TYML?" %>
     </nav>
 
-    <div class="tyml-profile-image" style="background-image: url(<%= tyml.sender.profile_pic %>);"></div>
+    <div class="tyml-profile-image"<% if tyml.sender.profile_pic? %> style="background-image: url(<%= tyml.sender.profile_pic %>)"<% end %>></div>
 
     <% if tyml.statement.blank? %>
       <p class="tyml-user"><%=  tyml.sender.name %> <span class="tyml-copy">thought you might like&hellip;</span></p>
