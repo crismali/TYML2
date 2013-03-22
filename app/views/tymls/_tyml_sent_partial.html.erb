@@ -1,7 +1,5 @@
 <div id="tyml_<%= tyml.id %>">
-
   <div class="tyml-container group" >
-
   <header class="tyml-header">
     <nav>
       <a class="reshare icon-share" href="#share" data-behavior="share-tyml" data-url="<%= tyml.url %>">$</a>
@@ -12,13 +10,20 @@
 
 
     <% if tyml.statement.blank? %>
-      <span class="tyml-copy">You thought <span class="tyml-user"><%= tyml.receiver.name.blank? ? tyml.receiver.email : tyml.receiver.name %></span> might like&hellip;</span>
+      <p class="tyml-user-info-wrap">
+        <span class="tyml-copy">You thought <span class="tyml-user"><%= tyml.receiver.name.blank? ? tyml.receiver.email : tyml.receiver.name %></span> might like&hellip;</span>
+      </p>
     <% else %>
-      <p class="tyml-copy">You thought <span class="tyml-user"><%= tyml.receiver.name.blank? ? tyml.receiver.email : tyml.receiver.name %></span> might like this because&hellip;</p>
+      <p class="tyml-user-info-wrap">
+        <span class="tyml-copy">You thought <span class="tyml-user"><%= tyml.receiver.name.blank? ? tyml.receiver.email : tyml.receiver.name %></span> might like this because&hellip;</span>
+      <p>
       <p class="tyml-because"><%= tyml.statement %></p>
     <% end %>
-    <p class="tyml-url"><%=  link_to tyml.url, tyml.url, :title => tyml.url, :target => '_blank' %></p>
   </header>
+
+  <div>
+    <p class="tyml-url"><%=  link_to tyml.url, tyml.url, :title => tyml.url, :target => '_blank' %></p>
+  </div>
 
   <div class="tyml-content-wrap">
     <div class="tyml-note">
