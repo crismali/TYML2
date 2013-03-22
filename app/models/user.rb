@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     Tyml.create(sender_id: team_id, url: "http://platexpectations.herokuapp.com/", statement: "You want your dining experience to be better.", receiver_id: self.id)
     Tyml.create(sender_id: team_id, url: "http://www.startnagging.com/", statement: "You want a better way to get your stuff back from friends.", receiver_id: self.id)
     Tyml.create(sender_id: team_id, url: "http://www.nytimes.com/projects/2012/snow-fall/#/?part=tunnel-creek", receiver_id: self.id, statement: "Who says journalism is dead? Check out this awesome story on NYT.")
-    Tyml.create(sender_id: team_id, url: "http://posterous.com/getfile/files.posterous.com/chcameron/r23ep6AmEv7NL0yorhknWtp8wObwkk1D8PTsfJaqx1rJhvQAcFDeQtlwwInp/omfngaaaaaaw.gif", receiver_id: self.id, statement: "This is the best way to show how we feel about you signing up!")
+    Tyml.create(sender_id: team_id, url: "http://media.tumblr.com/cfd49dd579c85cc60f482fb299f36835/tumblr_inline_mjzts0VoCx1qz4rgp.gif", receiver_id: self.id, statement: "This is the best way to show how we feel about you signing up!")
   end
 
   def valid_email
