@@ -6,6 +6,8 @@
 <%= form_tag(resend_confirmation_email_url, method: 'put') do %>
 
   <%= email_field_tag :email, nil, placeholder: 'Email' %>
-  <%= submit_tag %>
+  <div class="input-container">
+    <%= submit_tag %>
+  </div>
 <% end -%>
 </div>
