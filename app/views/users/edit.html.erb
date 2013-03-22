@@ -27,7 +27,7 @@
 
 <% end -%>
 </ul>
-<p class="bookmarklet-wrap"><a href="javascript:var s = document.createElement('script');s.type='text/javascript';s.src='<%= new_tyml_url.gsub('http:','') %>';document.body.appendChild(s);" class="bookmarklet">Bookmarklet +</a>
+<p class="bookmarklet-wrap"><a href="javascript:var W=400,H=450,TOP=Math.round((screen.height/2)-(H/2)),LEFT=Math.round((screen.width/2)-(W/2)),D=document;window.open(('<%= bookmarklet_url %>?url='+location.href),'','left='+LEFT+',top='+TOP+',height='+H+',width='+W+',location=0,toolbar=0,menubar=0');" class="bookmarklet">Bookmarklet +</a>
   <br />
   <span>Drag the Bookmarklet above to your bookmarks bar and share TYMLs from anywhere!</span>
 </p>
