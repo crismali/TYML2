@@ -41,8 +41,11 @@
 
     <div class="comments-container">
       <div id="tyml_comments_<%= tyml.id %>">
-        <% tyml.comments.each do |comment| %>
-          <%= render 'comments/comment', :comment => comment %>
+        <% tyml_comments = tyml.comments %>
+        <% unless (tyml_comments.empty?) %>
+          <% tyml.comments.to_a.each do |comment| %>
+            <%= render 'comments/comment', :comment => comment %>
+          <% end %>
         <% end %>
       </div>
         <%= render 'comments/comment_form', :tyml => tyml %>
