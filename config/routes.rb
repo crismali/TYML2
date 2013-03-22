@@ -35,6 +35,8 @@ TYML2::Application.routes.draw do
 
   resources :contacts, :only => [ :create, :destroy, :index ]
 
+  get '/bookmarklet' => 'tymls#new', as: 'bookmarklet'
+
   get '/faq', :controller => 'Statics', :action => 'faq', :as => 'faq'
 
 end
