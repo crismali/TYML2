@@ -15,13 +15,14 @@ class User < ActiveRecord::Base
 
   validate :valid_email
 
-  after_create do
-    Tyml.create(sender_id: User.find_by_name("The TYML Team").id, url: "http://google.com",
-                receiver_id: self.id, statement: "Some kind of statement.")
-    Tyml.create(sender_id: User.find_by_name("The TYML Team").id, url: "http://google.com",
-                receiver_id: self.id, statement: "Some kind of statement.")
-    Tyml.create(sender_id: User.find_by_name("The TYML Team").id, url: "http://google.com",
-                receiver_id: self.id, statement: "Some kind of statement.")
+  after_save do
+    team_id = User.find_by_email("tyml.app@gmail.com").id
+    Tyml.create(sender_id: team_id, url: "http://picyor.com/", statement: "It's always fun to pick between two options!", receiver_id: self.id)
+    Tyml.create(sender_id: team_id, url: "http://fundhero.org/", statement: "If you're interested in helping kids lead better lives, check this out.", receiver_id: self.id)
+    Tyml.create(sender_id: team_id, url: "http://platexpectations.herokuapp.com/", statement: "You want your dining experience to be better.", receiver_id: self.id)
+    Tyml.create(sender_id: team_id, url: "http://www.startnagging.com/", statement: "You want a better way to get your stuff back from friends.", receiver_id: self.id)
+    Tyml.create(sender_id: team_id, url: "http://www.nytimes.com/projects/2012/snow-fall/#/?part=tunnel-creek", receiver_id: self.id, statement: "Who says journalism is dead? Check out this awesome story on NYT.")
+    Tyml.create(sender_id: team_id, url: "http://posterous.com/getfile/files.posterous.com/chcameron/r23ep6AmEv7NL0yorhknWtp8wObwkk1D8PTsfJaqx1rJhvQAcFDeQtlwwInp/omfngaaaaaaw.gif", receiver_id: self.id, statement: "This is the best way to show how we feel about you signing up!")
   end
 
   def valid_email
