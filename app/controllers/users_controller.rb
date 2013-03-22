@@ -13,15 +13,15 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @received_tymls = @current_user.received_tymls.where(archived: false, receiver_deleted: false).order('created_at desc')
+    @received_tymls = @current_user.received_tymls.where(archived: false, receiver_deleted: false).order('created_at desc').to_a
   end
 
   def sent
-    @sent_tymls = @current_user.sent_tymls.where(sender_deleted: false).order('created_at desc')
+    @sent_tymls = @current_user.sent_tymls.where(sender_deleted: false).order('created_at desc').to_a
   end
 
   def edit
-    @archived_tymls = @current_user.received_tymls.where(archived: true, receiver_deleted: false).order('created_at desc')
+    @archived_tymls = @current_user.received_tymls.where(archived: true, receiver_deleted: false).order('created_at desc').to_a
   end
 
   def update
