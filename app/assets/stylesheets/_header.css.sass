@@ -5,18 +5,29 @@
     width: auto
     float: left
     display: block
+    margin-top: 1em
+    @include respond-to(large)
+      float: none
+      margin: 1em auto
   nav
     text-align: right
     margin: 1em auto
-    line-height: 1.8em
+    line-height: 2em
     a
       color: #163a58
       text-decoration: none
-      margin-left: 1em
+      + a
+        margin-left: 1em
       &:hover
         text-decoration: underline
       &:first-child
         margin-left: 0
+    @include respond-to(large)
+      &.in-app
+        text-align: center
+        float: none
+        margin-top: 0.25em
+        margin-bottom: 0
     @include respond-to(xsmall)
       font-size: 0.75em
       a
