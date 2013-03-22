@@ -5,6 +5,8 @@ Comment.destroy_all
 
 users = [
   {name: 'The TYML Team', email: 'tyml.app@gmail.com', password: 'woohoo', confirmed: true, receive_comment_notifications: false, receive_new_tyml_notifications: false },
+  {name: 'Steve', email: 'michael.d.mcgee@icloud.com', password: 'woohoo', confirmed: true, receive_comment_notifications: false, receive_new_tyml_notifications: false },
+  {name: 'Paul', email: 'michael.d.mcgee@gmail.com', password: 'woohoo', confirmed: true, receive_comment_notifications: false, receive_new_tyml_notifications: false },
   {name: 'Mike McGee', email: 'mike@starterleague.com', bio: 'I did cool things', location: 'Chicago, IL', password: 'woohoo', confirmed: true, remember_token: '1', receive_new_tyml_notifications: false, receive_comment_notifications: false },
   {name: 'Michael Crismali', email: 'michael.crismali@gmail.com', bio: 'I went to a hippy school', location: 'Chicago, IL', password: 'woohoo', confirmed: true, remember_token: '2', receive_new_tyml_notifications: false, receive_comment_notifications: false },
   {name: 'Natasha Postolovski', email: 'npostolovski@gmail.com', bio: 'I did even cooler things', location: 'Melbourne, AU', password: 'woohoo', confirmed: true, remember_token: '3', receive_new_tyml_notifications: false, receive_comment_notifications: false },
@@ -35,8 +37,8 @@ urls = [ 'http://www.yelp.com/', 'https://www.google.com/', 'https://twitter.com
   tyml = Tyml.new
   tyml.statement = notes.sample
   tyml.url = urls.sample
-  tyml.sender_id = User.offset(rand(7)).first.id
-  tyml.receiver_id = User.offset(rand(7)).first.id
+  tyml.sender_id = User.offset(rand(9)).first.id
+  tyml.receiver_id = User.offset(rand(9)).first.id
 
   if rand(2) == 1
     tyml.viewed = true
@@ -52,7 +54,7 @@ puts 'Created 100 tymls'
 
 25.times do
   c = Comment.new
-  c.user_id = User.offset(rand(7)).first.id
+  c.user_id = User.offset(rand(9)).first.id
   c.tyml_id = Tyml.offset(rand(100)).first.id
   c.comment_text = notes[rand(4)]
   c.save
